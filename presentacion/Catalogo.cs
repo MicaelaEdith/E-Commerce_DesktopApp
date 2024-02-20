@@ -10,10 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Dominio;
 using Negocio;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace Presentacion
 {
-    public partial class Catalogo : Form
+    public partial class Catalogo : MaterialForm
     {
 
         private List<Producto> listaProductos;
@@ -21,6 +23,12 @@ namespace Presentacion
         public Catalogo()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Primary.Blue900, Primary.Blue900,
+            Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void cargar()
@@ -52,6 +60,9 @@ namespace Presentacion
         {
             cargar();
             cargarCampos();
+            txtPrecioMin.BackColor = Color.LightSteelBlue;
+            txtPrecioMax.BackColor = Color.LightSteelBlue;
+            txtBusqueda.BackColor = Color.LightSteelBlue;
         }
 
         private void cargaImagen(string imagen)
@@ -67,7 +78,7 @@ namespace Presentacion
 
                 //pbxImagen.Load("https://lh3.googleusercontent.com/vCK2TrgcCQ_FC6BjBWxE9dPsl9QN6sZ9qhM57lwxYRWLPaWarAY4pKX1mbhZ0PisOg1VOp2fKTF-UrwGGKP5WDeUUQ89PWEOu9Bnw4n8rVQE9lXJLtUhM4o2q6PRGvelkBk5T29jGe7hCvZtLxMcb6D4rPHp-S_KcUG8suJbS35ViRIdZVl2KsVmu_Ug8PuCdMAfQ8GaE1146jjEu1a2wkl1Wf5pRInnua3w6eIcJWAungweFsv_ZTU3PFeLDbFAFbpY1HfecqqzT_0D-5HfGVA1bzVITXIM-YB5M9CtMaQSkwzloiZKT2CsU447bT5GSRT-L_c2KDI807LVRUU0mDqCgFFky1OAn3npZOrEQmYdf9Is6CQOPT0eXPcV_f_rpxqHk4-2BXShSUaB_1JPaIKXsniEgzsaaMGdJBOEFsqpudyI0Wy4GL-BHMzqSAB9BlAmRPOkF-2lbZSTb-GIiEBYIMFedKlTbDeI8F0Kq9db9kkT8U8XqbS9PxluihQcY4nffc_Bj-sDXxyZrNoxRwDMf1YxwE2JaiFBH35aiT6Y97itHOkPY7-kWWX_MseS4LeQ8WkYLyi3YMpSctaGKbwwAqvh8joCX8-ZflYgNg5uE2Sa5vOxlsw_vZ7fkuwTIoOriXTspiVwW5DE6ZRH5DTC_v_Nh_hqT2h32exu8VwVigfOG66zTbIQf25UURP_gslCQOTcO3l5EIFCe1bTxhGjYSIud4pdujezMgrcpBDLZYPRrqJtr0KFMw=s309-no?authuser=0");
                  pbxImagen.Image = null;
-                 lblNoDisponible.Visible = true;
+                // lblNoDisponible.Visible = true;
             }
 
         }
