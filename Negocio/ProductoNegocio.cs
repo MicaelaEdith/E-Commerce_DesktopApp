@@ -18,7 +18,6 @@ namespace Negocio
 
             try
             {
-                ////  chequear consulta para truncar valores
                 datos.Consulta("SELECT A.Id, Codigo, Nombre,A.Descripcion, M.Descripcion as Marca,C.Descripcion as Categoria,ImagenUrl, ROUND(Precio, 2) as Precio,A.IdMarca,A.IdCategoria FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE M.Id=A.IdMarca and C.Id=A.IdCategoria");
                 datos.Leer();
 
@@ -36,7 +35,7 @@ namespace Negocio
                     aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Precio = Math.Round((decimal)datos.Lector["Precio"], 2);
 
                     listaProductos.Add(aux);
                 }
@@ -168,9 +167,9 @@ namespace Negocio
                         aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                         aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                        aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.Precio = Math.Round((decimal)datos.Lector["Precio"], 2);
 
-                        productosEncontrados.Add(aux);
+                    productosEncontrados.Add(aux);
                     }
 
                     return productosEncontrados;

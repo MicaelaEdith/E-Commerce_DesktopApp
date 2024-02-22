@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +40,9 @@
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.categoriasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -48,22 +51,27 @@
             this.txtPrecioMax = new System.Windows.Forms.TextBox();
             this.lblGuion = new System.Windows.Forms.Label();
             this.pbxImagen = new System.Windows.Forms.PictureBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
             this.btnLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.cbxCategorias = new MaterialSkin.Controls.MaterialComboBox();
             this.cbxMarca = new MaterialSkin.Controls.MaterialComboBox();
+            this.btnAgregarItem = new MaterialSkin.Controls.MaterialButton();
+            this.btnVaciar = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.dgvCarrito = new System.Windows.Forms.DataGridView();
+            this.lblPrecioFinal = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(425, 40);
+            this.label1.Location = new System.Drawing.Point(422, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
@@ -91,45 +99,70 @@
             this.modificarToolStripMenuItem,
             this.eliminarToolStripMenuItem});
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(69, 34);
             this.articulosToolStripMenuItem.Text = "Artículos";
             // 
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.menuStrip1.BackColor = System.Drawing.Color.SlateGray;
-            this.menuStrip1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.menuStrip1.AutoSize = false;
+            this.menuStrip1.BackColor = System.Drawing.Color.Gray;
+            this.menuStrip1.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(16, 12);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.articulosToolStripMenuItem});
-            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip1.Location = new System.Drawing.Point(3, 64);
+            this.articulosToolStripMenuItem,
+            this.categoriasMenuItem,
+            this.marcasMenuItem,
+            this.ventasMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 64);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 6, 0, 6);
-            this.menuStrip1.Size = new System.Drawing.Size(931, 34);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.ShowItemToolTips = true;
+            this.menuStrip1.Size = new System.Drawing.Size(970, 34);
+            this.menuStrip1.Stretch = false;
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // categoriasMenuItem
+            // 
+            this.categoriasMenuItem.Name = "categoriasMenuItem";
+            this.categoriasMenuItem.Size = new System.Drawing.Size(76, 34);
+            this.categoriasMenuItem.Text = "Categorias";
+            // 
+            // marcasMenuItem
+            // 
+            this.marcasMenuItem.Name = "marcasMenuItem";
+            this.marcasMenuItem.Size = new System.Drawing.Size(57, 34);
+            this.marcasMenuItem.Text = "Marcas";
+            // 
+            // ventasMenuItem
+            // 
+            this.ventasMenuItem.Name = "ventasMenuItem";
+            this.ventasMenuItem.Size = new System.Drawing.Size(56, 34);
+            this.ventasMenuItem.Text = "Ventas";
             // 
             // dgvProductos
             // 
@@ -137,53 +170,57 @@
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeColumns = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle46.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.ColumnHeadersHeight = 40;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvProductos.Location = new System.Drawing.Point(30, 145);
+            this.dgvProductos.Location = new System.Drawing.Point(28, 155);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle49.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.Gray;
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gray;
+            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProductos.RowTemplate.Height = 30;
             this.dgvProductos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(668, 311);
+            this.dgvProductos.Size = new System.Drawing.Size(707, 355);
             this.dgvProductos.StandardTab = true;
             this.dgvProductos.TabIndex = 7;
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
@@ -191,7 +228,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(39, 112);
+            this.lblCategoria.Location = new System.Drawing.Point(40, 122);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(57, 13);
             this.lblCategoria.TabIndex = 1;
@@ -200,7 +237,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(320, 112);
+            this.lblMarca.Location = new System.Drawing.Point(335, 122);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 3;
@@ -209,7 +246,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(600, 110);
+            this.lblPrecio.Location = new System.Drawing.Point(623, 120);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(90, 13);
             this.lblPrecio.TabIndex = 7;
@@ -217,23 +254,23 @@
             // 
             // txtPrecioMin
             // 
-            this.txtPrecioMin.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtPrecioMin.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPrecioMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPrecioMin.Location = new System.Drawing.Point(724, 105);
-            this.txtPrecioMin.MinimumSize = new System.Drawing.Size(0, 25);
+            this.txtPrecioMin.Location = new System.Drawing.Point(751, 112);
+            this.txtPrecioMin.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtPrecioMin.Name = "txtPrecioMin";
-            this.txtPrecioMin.Size = new System.Drawing.Size(92, 25);
+            this.txtPrecioMin.Size = new System.Drawing.Size(92, 13);
             this.txtPrecioMin.TabIndex = 3;
             this.txtPrecioMin.TextChanged += new System.EventHandler(this.txtPrecioMin_TextChanged);
             // 
             // txtPrecioMax
             // 
-            this.txtPrecioMax.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtPrecioMax.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPrecioMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPrecioMax.Location = new System.Drawing.Point(830, 105);
-            this.txtPrecioMax.MinimumSize = new System.Drawing.Size(0, 25);
+            this.txtPrecioMax.Location = new System.Drawing.Point(857, 112);
+            this.txtPrecioMax.MinimumSize = new System.Drawing.Size(0, 30);
             this.txtPrecioMax.Name = "txtPrecioMax";
-            this.txtPrecioMax.Size = new System.Drawing.Size(91, 25);
+            this.txtPrecioMax.Size = new System.Drawing.Size(91, 13);
             this.txtPrecioMax.TabIndex = 1;
             this.txtPrecioMax.TextChanged += new System.EventHandler(this.txtPrecioMax_TextChanged);
             // 
@@ -242,7 +279,7 @@
             this.lblGuion.AutoSize = true;
             this.lblGuion.BackColor = System.Drawing.Color.Transparent;
             this.lblGuion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblGuion.Location = new System.Drawing.Point(818, 108);
+            this.lblGuion.Location = new System.Drawing.Point(844, 115);
             this.lblGuion.Name = "lblGuion";
             this.lblGuion.Size = new System.Drawing.Size(14, 20);
             this.lblGuion.TabIndex = 11;
@@ -250,30 +287,17 @@
             // 
             // pbxImagen
             // 
-            this.pbxImagen.Location = new System.Drawing.Point(728, 196);
+            this.pbxImagen.Location = new System.Drawing.Point(757, 196);
             this.pbxImagen.Name = "pbxImagen";
-            this.pbxImagen.Size = new System.Drawing.Size(194, 206);
+            this.pbxImagen.Size = new System.Drawing.Size(194, 177);
             this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagen.TabIndex = 12;
             this.pbxImagen.TabStop = false;
             // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescripcion.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtDescripcion.Location = new System.Drawing.Point(728, 408);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Size = new System.Drawing.Size(194, 86);
-            this.txtDescripcion.TabIndex = 13;
-            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // lblBusqueda
             // 
             this.lblBusqueda.AutoSize = true;
-            this.lblBusqueda.Location = new System.Drawing.Point(29, 481);
+            this.lblBusqueda.Location = new System.Drawing.Point(40, 551);
             this.lblBusqueda.Name = "lblBusqueda";
             this.lblBusqueda.Size = new System.Drawing.Size(90, 13);
             this.lblBusqueda.TabIndex = 14;
@@ -281,12 +305,16 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.BackColor = System.Drawing.Color.SlateGray;
+            this.txtBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBusqueda.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBusqueda.Location = new System.Drawing.Point(146, 479);
-            this.txtBusqueda.MinimumSize = new System.Drawing.Size(0, 25);
+            this.txtBusqueda.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBusqueda.ForeColor = System.Drawing.Color.Gray;
+            this.txtBusqueda.Location = new System.Drawing.Point(143, 541);
+            this.txtBusqueda.MinimumSize = new System.Drawing.Size(0, 32);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(209, 13);
+            this.txtBusqueda.Size = new System.Drawing.Size(254, 32);
             this.txtBusqueda.TabIndex = 8;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
@@ -298,7 +326,7 @@
             this.btnBuscar.Depth = 0;
             this.btnBuscar.HighEmphasis = true;
             this.btnBuscar.Icon = null;
-            this.btnBuscar.Location = new System.Drawing.Point(725, 146);
+            this.btnBuscar.Location = new System.Drawing.Point(754, 155);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBuscar.Name = "btnBuscar";
@@ -309,6 +337,7 @@
             this.btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscar.UseAccentColor = false;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // btnLimpiar
             // 
@@ -318,7 +347,7 @@
             this.btnLimpiar.Depth = 0;
             this.btnLimpiar.HighEmphasis = true;
             this.btnLimpiar.Icon = null;
-            this.btnLimpiar.Location = new System.Drawing.Point(827, 146);
+            this.btnLimpiar.Location = new System.Drawing.Point(856, 155);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpiar.Name = "btnLimpiar";
@@ -329,6 +358,7 @@
             this.btnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnLimpiar.UseAccentColor = false;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click_1);
             // 
             // cbxCategorias
             // 
@@ -339,12 +369,12 @@
             this.cbxCategorias.DropDownHeight = 118;
             this.cbxCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategorias.DropDownWidth = 121;
-            this.cbxCategorias.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbxCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbxCategorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbxCategorias.FormattingEnabled = true;
             this.cbxCategorias.IntegralHeight = false;
             this.cbxCategorias.ItemHeight = 29;
-            this.cbxCategorias.Location = new System.Drawing.Point(115, 104);
+            this.cbxCategorias.Location = new System.Drawing.Point(116, 111);
             this.cbxCategorias.MaxDropDownItems = 4;
             this.cbxCategorias.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbxCategorias.MouseState = MaterialSkin.MouseState.OUT;
@@ -369,7 +399,7 @@
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.IntegralHeight = false;
             this.cbxMarca.ItemHeight = 29;
-            this.cbxMarca.Location = new System.Drawing.Point(379, 104);
+            this.cbxMarca.Location = new System.Drawing.Point(398, 111);
             this.cbxMarca.MaxDropDownItems = 4;
             this.cbxMarca.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbxMarca.MouseState = MaterialSkin.MouseState.OUT;
@@ -380,19 +410,106 @@
             this.cbxMarca.UseAccent = false;
             this.cbxMarca.UseTallSize = false;
             // 
+            // btnAgregarItem
+            // 
+            this.btnAgregarItem.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarItem.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarItem.Depth = 0;
+            this.btnAgregarItem.HighEmphasis = true;
+            this.btnAgregarItem.Icon = null;
+            this.btnAgregarItem.Location = new System.Drawing.Point(460, 539);
+            this.btnAgregarItem.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarItem.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarItem.Name = "btnAgregarItem";
+            this.btnAgregarItem.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarItem.Size = new System.Drawing.Size(126, 36);
+            this.btnAgregarItem.TabIndex = 19;
+            this.btnAgregarItem.Text = "Agregar Item";
+            this.btnAgregarItem.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarItem.UseAccentColor = false;
+            this.btnAgregarItem.UseVisualStyleBackColor = true;
+            this.btnAgregarItem.Click += new System.EventHandler(this.btnAgregarItem_Click);
+            // 
+            // btnVaciar
+            // 
+            this.btnVaciar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnVaciar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnVaciar.Depth = 0;
+            this.btnVaciar.HighEmphasis = true;
+            this.btnVaciar.Icon = null;
+            this.btnVaciar.Location = new System.Drawing.Point(597, 539);
+            this.btnVaciar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnVaciar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnVaciar.Name = "btnVaciar";
+            this.btnVaciar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnVaciar.Size = new System.Drawing.Size(138, 36);
+            this.btnVaciar.TabIndex = 20;
+            this.btnVaciar.Text = "Vaciar Carrito";
+            this.btnVaciar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnVaciar.UseAccentColor = false;
+            this.btnVaciar.UseVisualStyleBackColor = true;
+            this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(767, 539);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(156, 36);
+            this.materialButton1.TabIndex = 21;
+            this.materialButton1.Text = "Confirmar Venta";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            // 
+            // dgvCarrito
+            // 
+            this.dgvCarrito.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.dgvCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarrito.Location = new System.Drawing.Point(758, 393);
+            this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.RowHeadersVisible = false;
+            this.dgvCarrito.Size = new System.Drawing.Size(190, 93);
+            this.dgvCarrito.TabIndex = 22;
+            // 
+            // lblPrecioFinal
+            // 
+            this.lblPrecioFinal.AutoSize = true;
+            this.lblPrecioFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioFinal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblPrecioFinal.Location = new System.Drawing.Point(840, 514);
+            this.lblPrecioFinal.Name = "lblPrecioFinal";
+            this.lblPrecioFinal.Size = new System.Drawing.Size(90, 13);
+            this.lblPrecioFinal.TabIndex = 23;
+            this.lblPrecioFinal.Text = "Precio Final :  ";
+            this.lblPrecioFinal.Visible = false;
+            // 
             // Catalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(937, 550);
+            this.ClientSize = new System.Drawing.Size(970, 604);
+            this.Controls.Add(this.lblPrecioFinal);
+            this.Controls.Add(this.dgvCarrito);
+            this.Controls.Add(this.materialButton1);
+            this.Controls.Add(this.btnVaciar);
+            this.Controls.Add(this.btnAgregarItem);
             this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.cbxCategorias);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.lblBusqueda);
-            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.pbxImagen);
             this.Controls.Add(this.lblGuion);
             this.Controls.Add(this.label1);
@@ -404,9 +521,9 @@
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(937, 550);
             this.MinimumSize = new System.Drawing.Size(937, 550);
             this.Name = "Catalogo";
+            this.Padding = new System.Windows.Forms.Padding(0, 64, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Commerce";
             this.Load += new System.EventHandler(this.Catalogo_Load);
@@ -414,6 +531,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,7 +544,6 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblMarca;
@@ -435,13 +552,21 @@
         private System.Windows.Forms.TextBox txtPrecioMax;
         private System.Windows.Forms.Label lblGuion;
         private System.Windows.Forms.PictureBox pbxImagen;
-        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblBusqueda;
-        private System.Windows.Forms.TextBox txtBusqueda;
         private MaterialSkin.Controls.MaterialButton btnBuscar;
         private MaterialSkin.Controls.MaterialButton btnLimpiar;
         public MaterialSkin.Controls.MaterialComboBox cbxCategorias;
         public MaterialSkin.Controls.MaterialComboBox cbxMarca;
+        private System.Windows.Forms.ToolStripMenuItem categoriasMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcasMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasMenuItem;
+        private MaterialSkin.Controls.MaterialButton btnAgregarItem;
+        private MaterialSkin.Controls.MaterialButton btnVaciar;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private System.Windows.Forms.DataGridView dgvCarrito;
+        public System.Windows.Forms.Label lblPrecioFinal;
+        public System.Windows.Forms.TextBox txtBusqueda;
+        public System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
 

@@ -10,16 +10,46 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.Runtime.InteropServices;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace Presentacion
 {
-    public partial class FrmAltaProducto : Form
+    public partial class FrmAltaProducto : MaterialForm
     {
         private Producto producto = null;
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
 
         public FrmAltaProducto()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Primary.Grey900, Primary.Grey900,
+            Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.ForeColor = Color.FromArgb(19, 19, 19);
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+            txtCodigo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+            txtNombre.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+            txtDescripcion.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+            txtPrecio.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+            txtUrlImagen.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+            cbxCategoria.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategoria.Width, cbxCategoria.Height, 5, 5));
+            cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
         }
 
         public FrmAltaProducto(Producto producto)
@@ -28,11 +58,6 @@ namespace Presentacion
             this.producto = producto;
             Text = "Modificar producto";
 
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private bool validarAlta()
@@ -155,5 +180,9 @@ namespace Presentacion
 
         }
 
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
