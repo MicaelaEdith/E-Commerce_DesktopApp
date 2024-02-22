@@ -12,6 +12,7 @@ using Dominio;
 using Negocio;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Runtime.InteropServices;
 
 namespace Presentacion
 {
@@ -20,6 +21,16 @@ namespace Presentacion
 
         private List<Producto> listaProductos;
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
         public Catalogo()
         {
             InitializeComponent();
@@ -28,7 +39,10 @@ namespace Presentacion
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
             Primary.Blue900, Primary.Blue900,
-            Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            Primary.BlueGrey800, Accent.LightBlue200, TextShade.WHITE);
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+            
         }
 
         private void cargar()
@@ -74,11 +88,8 @@ namespace Presentacion
 
             }
             catch (Exception ex)
-            {
-
-                //pbxImagen.Load("https://lh3.googleusercontent.com/vCK2TrgcCQ_FC6BjBWxE9dPsl9QN6sZ9qhM57lwxYRWLPaWarAY4pKX1mbhZ0PisOg1VOp2fKTF-UrwGGKP5WDeUUQ89PWEOu9Bnw4n8rVQE9lXJLtUhM4o2q6PRGvelkBk5T29jGe7hCvZtLxMcb6D4rPHp-S_KcUG8suJbS35ViRIdZVl2KsVmu_Ug8PuCdMAfQ8GaE1146jjEu1a2wkl1Wf5pRInnua3w6eIcJWAungweFsv_ZTU3PFeLDbFAFbpY1HfecqqzT_0D-5HfGVA1bzVITXIM-YB5M9CtMaQSkwzloiZKT2CsU447bT5GSRT-L_c2KDI807LVRUU0mDqCgFFky1OAn3npZOrEQmYdf9Is6CQOPT0eXPcV_f_rpxqHk4-2BXShSUaB_1JPaIKXsniEgzsaaMGdJBOEFsqpudyI0Wy4GL-BHMzqSAB9BlAmRPOkF-2lbZSTb-GIiEBYIMFedKlTbDeI8F0Kq9db9kkT8U8XqbS9PxluihQcY4nffc_Bj-sDXxyZrNoxRwDMf1YxwE2JaiFBH35aiT6Y97itHOkPY7-kWWX_MseS4LeQ8WkYLyi3YMpSctaGKbwwAqvh8joCX8-ZflYgNg5uE2Sa5vOxlsw_vZ7fkuwTIoOriXTspiVwW5DE6ZRH5DTC_v_Nh_hqT2h32exu8VwVigfOG66zTbIQf25UURP_gslCQOTcO3l5EIFCe1bTxhGjYSIud4pdujezMgrcpBDLZYPRrqJtr0KFMw=s309-no?authuser=0");
+            {  
                  pbxImagen.Image = null;
-                // lblNoDisponible.Visible = true;
             }
 
         }
@@ -92,15 +103,23 @@ namespace Presentacion
 
         private void cargarCampos()
         {
-            cbxCategoria.Items.Add("Celulares");
-            cbxCategoria.Items.Add("Televisores");
-            cbxCategoria.Items.Add("Media");
-            cbxCategoria.Items.Add("Audio");
-            cbxMarca.Items.Add("Samsung");
-            cbxMarca.Items.Add("Apple");
-            cbxMarca.Items.Add("Sony");
-            cbxMarca.Items.Add("Huawei");
-            cbxMarca.Items.Add("Motorola");
+            MarcaNegocio mn = new MarcaNegocio();
+            CategoriaNegocio cn = new CategoriaNegocio();
+
+            List<Marca> listaMarcas = mn.listaMarcas();
+            List<Categoria> listaCategoria = cn.listaCategorias();
+            
+
+            foreach (var marca in listaMarcas) {
+                cbxMarca.Items.Add(marca.Descripcion);
+
+            }
+            foreach (var categoria in listaCategoria)
+            {
+                cbxCategorias.Items.Add(categoria.Descripcion);
+
+            }
+
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -108,7 +127,7 @@ namespace Presentacion
             List<Producto> listaFiltrada;
             string filtro = txtBusqueda.Text;
 
-            if(filtro!= "")
+            if (filtro != "")
             {
                 listaFiltrada = listaProductos.FindAll(x => x.Nombre.ToLower().Contains(filtro.ToLower()));
             }
@@ -121,10 +140,9 @@ namespace Presentacion
             dgvProductos.Columns["imagenUrl"].Visible = false;
             dgvProductos.Columns["Id"].Visible = false;
             dgvProductos.Columns["Descripcion"].Visible = false;
-
         }
 
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+    private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             try
@@ -174,8 +192,8 @@ namespace Presentacion
             string minimo = txtPrecioMin.Text;
             string maximo = txtPrecioMax.Text;
 
-            if (cbxCategoria.SelectedIndex != -1)
-                 categoria = cbxCategoria.SelectedItem.ToString();
+            if (cbxCategorias.SelectedIndex != -1)
+                 categoria = cbxCategorias.SelectedItem.ToString();
             else categoria = "";
 
             if (cbxMarca.SelectedIndex != -1)
@@ -194,7 +212,7 @@ namespace Presentacion
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            cbxCategoria.SelectedIndex = -1;
+            cbxCategorias.SelectedIndex = -1;
             cbxMarca.SelectedIndex = -1;
             txtBusqueda.Clear();
             txtPrecioMin.Clear();
