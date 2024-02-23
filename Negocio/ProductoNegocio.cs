@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.Consulta("SELECT A.Id, Codigo, Nombre,A.Descripcion, M.Descripcion as Marca,C.Descripcion as Categoria,ImagenUrl, ROUND(Precio, 2) as Precio,A.IdMarca,A.IdCategoria FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE M.Id=A.IdMarca and C.Id=A.IdCategoria");
+                datos.Consulta("SELECT A.Id, Codigo, Nombre,A.Descripcion, M.Descripcion as Marca,C.Descripcion as Categoria,ImagenUrl, ROUND(Precio, 2) as Precio,A.IdMarca,A.IdCategoria, stock, cantidadVentas FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE M.Id=A.IdMarca and C.Id=A.IdCategoria");
                 datos.Leer();
 
                 while (datos.Lector.Read())
@@ -36,6 +36,8 @@ namespace Negocio
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Precio = Math.Round((decimal)datos.Lector["Precio"], 2);
+                    aux.Stock = (int)datos.Lector["Stock"];
+                    aux.CantidadVentas = (int)datos.Lector["CantidadVentas"];
 
                     listaProductos.Add(aux);
                 }

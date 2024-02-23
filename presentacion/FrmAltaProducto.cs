@@ -38,18 +38,8 @@ namespace Presentacion
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Grey900, Primary.Grey900,
+            Primary.LightBlue900, Primary.LightBlue900,
             Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.ForeColor = Color.FromArgb(19, 19, 19);
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
-            txtCodigo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
-            txtNombre.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
-            txtDescripcion.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
-            txtPrecio.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
-            txtUrlImagen.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
-            cbxCategoria.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategoria.Width, cbxCategoria.Height, 5, 5));
-            cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
         }
 
         public FrmAltaProducto(Producto producto)
@@ -96,6 +86,7 @@ namespace Presentacion
                     producto.Categoria = (Categoria)cbxCategoria.SelectedItem;
                     producto.Precio = decimal.Parse(txtPrecio.Text);
                     producto.ImagenUrl = txtUrlImagen.Text;
+                    producto.Stock = int.Parse(txtStock.Text);
 
 
                 if (producto.Id != 0)
@@ -134,16 +125,30 @@ namespace Presentacion
                 cbxMarca.DisplayMember = "Descripcion";
                 cbxCategoria.SelectedIndex = -1;
                 cbxMarca.SelectedIndex = -1;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.ForeColor = Color.FromArgb(19, 19, 19);
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+                txtCodigo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+                txtNombre.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+                txtDescripcion.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+                txtPrecio.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+                txtStock.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtStock.Width, txtStock.Height, 5, 5));
+                txtUrlImagen.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCodigo.Width, txtCodigo.Height, 5, 5));
+                cbxCategoria.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategoria.Width, cbxCategoria.Height, 5, 5));
+                cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
+            
 
-                if(producto!=null)
+                if (producto!=null)
                 {
                     txtCodigo.Text = producto.Codigo;
                     txtNombre.Text = producto.Nombre;
                     txtDescripcion.Text = producto.Descripcion;
                     txtPrecio.Text = producto.Precio.ToString();
+                    txtStock.Text = producto.Stock.ToString();
                     txtUrlImagen.Text = producto.ImagenUrl;
                     cbxCategoria.SelectedValue = producto.Categoria.Id;
                     cbxMarca.SelectedValue = producto.Marca.Id;
+
                 }
             }
             catch (Exception ex)
@@ -183,6 +188,11 @@ namespace Presentacion
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

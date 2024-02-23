@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,12 +60,11 @@
             this.btnAgregarItem = new MaterialSkin.Controls.MaterialButton();
             this.btnVaciar = new MaterialSkin.Controls.MaterialButton();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
-            this.dgvCarrito = new System.Windows.Forms.DataGridView();
             this.lblPrecioFinal = new System.Windows.Forms.Label();
+            this.txtCarrito = new MaterialSkin.Controls.MaterialMultiLineTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -170,8 +169,8 @@
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeColumns = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -180,42 +179,42 @@
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.dgvProductos.ColumnHeadersHeight = 40;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle48;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvProductos.Location = new System.Drawing.Point(28, 155);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gray;
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle50;
             this.dgvProductos.RowTemplate.Height = 30;
             this.dgvProductos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -311,10 +310,10 @@
             this.txtBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBusqueda.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBusqueda.ForeColor = System.Drawing.Color.Gray;
-            this.txtBusqueda.Location = new System.Drawing.Point(143, 541);
+            this.txtBusqueda.Location = new System.Drawing.Point(161, 541);
             this.txtBusqueda.MinimumSize = new System.Drawing.Size(0, 32);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(254, 32);
+            this.txtBusqueda.Size = new System.Drawing.Size(254, 13);
             this.txtBusqueda.TabIndex = 8;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
@@ -469,29 +468,33 @@
             this.materialButton1.UseAccentColor = false;
             this.materialButton1.UseVisualStyleBackColor = true;
             // 
-            // dgvCarrito
-            // 
-            this.dgvCarrito.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.dgvCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarrito.Location = new System.Drawing.Point(758, 393);
-            this.dgvCarrito.Name = "dgvCarrito";
-            this.dgvCarrito.RowHeadersVisible = false;
-            this.dgvCarrito.Size = new System.Drawing.Size(190, 93);
-            this.dgvCarrito.TabIndex = 22;
-            // 
             // lblPrecioFinal
             // 
             this.lblPrecioFinal.AutoSize = true;
             this.lblPrecioFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioFinal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblPrecioFinal.Location = new System.Drawing.Point(840, 514);
+            this.lblPrecioFinal.Location = new System.Drawing.Point(765, 516);
             this.lblPrecioFinal.Name = "lblPrecioFinal";
             this.lblPrecioFinal.Size = new System.Drawing.Size(90, 13);
             this.lblPrecioFinal.TabIndex = 23;
             this.lblPrecioFinal.Text = "Precio Final :  ";
             this.lblPrecioFinal.Visible = false;
+            // 
+            // txtCarrito
+            // 
+            this.txtCarrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtCarrito.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCarrito.Depth = 0;
+            this.txtCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCarrito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtCarrito.Location = new System.Drawing.Point(762, 389);
+            this.txtCarrito.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtCarrito.Name = "txtCarrito";
+            this.txtCarrito.ReadOnly = true;
+            this.txtCarrito.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtCarrito.Size = new System.Drawing.Size(189, 121);
+            this.txtCarrito.TabIndex = 24;
+            this.txtCarrito.Text = "";
             // 
             // Catalogo
             // 
@@ -499,8 +502,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(970, 604);
+            this.Controls.Add(this.txtCarrito);
             this.Controls.Add(this.lblPrecioFinal);
-            this.Controls.Add(this.dgvCarrito);
             this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.btnVaciar);
             this.Controls.Add(this.btnAgregarItem);
@@ -521,9 +524,11 @@
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(937, 550);
+            this.MaximumSize = new System.Drawing.Size(970, 604);
+            this.MinimumSize = new System.Drawing.Size(970, 604);
             this.Name = "Catalogo";
             this.Padding = new System.Windows.Forms.Padding(0, 64, 0, 0);
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Commerce";
             this.Load += new System.EventHandler(this.Catalogo_Load);
@@ -531,7 +536,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,10 +567,10 @@
         private MaterialSkin.Controls.MaterialButton btnAgregarItem;
         private MaterialSkin.Controls.MaterialButton btnVaciar;
         private MaterialSkin.Controls.MaterialButton materialButton1;
-        private System.Windows.Forms.DataGridView dgvCarrito;
         public System.Windows.Forms.Label lblPrecioFinal;
         public System.Windows.Forms.TextBox txtBusqueda;
         public System.Windows.Forms.MenuStrip menuStrip1;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox txtCarrito;
     }
 }
 

@@ -28,6 +28,9 @@ namespace Dominio
         [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
 
+        public int Stock { get; set; }
+
+        public int CantidadVentas { get; set; }
 
     }
 

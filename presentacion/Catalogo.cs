@@ -20,7 +20,8 @@ namespace Presentacion
     {
 
         private List<Producto> listaProductos;
-        private List<Producto> listaCarrito;
+        private List<string> listaCarrito;
+        private decimal precioFinal;
         Producto seleccionado;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -40,7 +41,7 @@ namespace Presentacion
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Grey900, Primary.Grey900,
+            Primary.LightBlue900, Primary.LightBlue900,
             Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
@@ -48,9 +49,11 @@ namespace Presentacion
             txtPrecioMax.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMax.Width, txtPrecioMax.Height, 5, 5));
             txtBusqueda.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtBusqueda.Width, txtBusqueda.Height, 5, 5));
             dgvProductos.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, dgvProductos.Width, dgvProductos.Height, 5, 5));
+            txtCarrito.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCarrito.Width, txtCarrito.Height, 5, 5));
             cbxCategorias.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategorias.Width, cbxCategorias.Height, 5, 5));
             cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
             dgvProductos.ForeColor = Color.FromArgb(20, 20, 20);
+            
         }
 
         private void cargar()
@@ -64,6 +67,7 @@ namespace Presentacion
                 dgvProductos.Columns["imagenUrl"].Visible = false;
                 dgvProductos.Columns["Id"].Visible = false;
                 dgvProductos.Columns["Descripcion"].Visible = false;
+                dgvProductos.Columns["CantidadVentas"].Visible = false;
                 dgvProductos.ClearSelection();
                 cargaImagen(listaProductos[0].ImagenUrl);
 
@@ -223,6 +227,7 @@ namespace Presentacion
         private void seleccionGrilla()
         {
             seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            
             cargaImagen(seleccionado.ImagenUrl);
         }
 
@@ -263,15 +268,22 @@ namespace Presentacion
 
         private void btnAgregarItem_Click(object sender, EventArgs e)
         {
-            // listaCarrito.Add(seleccionado);
-            // dgvCarrito.DataSource = listaCarrito;
-            // actualizar:  lblPrecioFinal.Text;
+            if (seleccionado != null)
+            {
+
+                txtCarrito.Text += seleccionado.Nombre + " - $" + seleccionado.Precio+"\n";
+                precioFinal += seleccionado.Precio;
+                lblPrecioFinal.Text ="Precio Final: $"+ Math.Round(precioFinal,2).ToString();
+                lblPrecioFinal.Visible=true;
+
+            }
         }
 
         private void btnVaciar_Click(object sender, EventArgs e)
         {
-            listaCarrito.Clear();
-            dgvCarrito.DataSource = listaCarrito;
+            txtCarrito.Text="";
+            lblPrecioFinal.Visible = false;
+            precioFinal = 0;
         }
 
         private void establecerColor() {
@@ -279,7 +291,7 @@ namespace Presentacion
             txtPrecioMin.BackColor = Color.LightGray;
             txtPrecioMax.BackColor = Color.LightGray;
             txtBusqueda.BackColor = Color.LightGray;
-            menuStrip1.BackColor = Color.FromArgb(129, 129, 129);
+            menuStrip1.BackColor = Color.LightGray;
         }
 
     }

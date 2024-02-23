@@ -45,6 +45,8 @@
             this.cbxMarca = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAceptar = new MaterialSkin.Controls.MaterialButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
+            this.txtStock = new MaterialSkin.Controls.MaterialTextBox();
+            this.lblStock = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenAlta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +80,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(317, 333);
+            this.lblMarca.Location = new System.Drawing.Point(325, 371);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 3;
@@ -87,7 +89,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(20, 333);
+            this.lblCategoria.Location = new System.Drawing.Point(22, 371);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(57, 13);
             this.lblCategoria.TabIndex = 4;
@@ -105,7 +107,7 @@
             // lblImagenUrl
             // 
             this.lblImagenUrl.AutoSize = true;
-            this.lblImagenUrl.Location = new System.Drawing.Point(17, 265);
+            this.lblImagenUrl.Location = new System.Drawing.Point(17, 315);
             this.lblImagenUrl.Name = "lblImagenUrl";
             this.lblImagenUrl.Size = new System.Drawing.Size(61, 13);
             this.lblImagenUrl.TabIndex = 6;
@@ -115,9 +117,9 @@
             // 
             this.pbxImagenAlta.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pbxImagenAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbxImagenAlta.Location = new System.Drawing.Point(373, 87);
+            this.pbxImagenAlta.Location = new System.Drawing.Point(375, 87);
             this.pbxImagenAlta.Name = "pbxImagenAlta";
-            this.pbxImagenAlta.Size = new System.Drawing.Size(198, 219);
+            this.pbxImagenAlta.Size = new System.Drawing.Size(214, 252);
             this.pbxImagenAlta.TabIndex = 17;
             this.pbxImagenAlta.TabStop = false;
             // 
@@ -171,7 +173,7 @@
             this.txtUrlImagen.Depth = 0;
             this.txtUrlImagen.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtUrlImagen.LeadingIcon = null;
-            this.txtUrlImagen.Location = new System.Drawing.Point(107, 264);
+            this.txtUrlImagen.Location = new System.Drawing.Point(107, 314);
             this.txtUrlImagen.MaximumSize = new System.Drawing.Size(250, 25);
             this.txtUrlImagen.MaxLength = 50;
             this.txtUrlImagen.MinimumSize = new System.Drawing.Size(250, 25);
@@ -240,7 +242,7 @@
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.IntegralHeight = false;
             this.cbxCategoria.ItemHeight = 29;
-            this.cbxCategoria.Location = new System.Drawing.Point(107, 322);
+            this.cbxCategoria.Location = new System.Drawing.Point(109, 360);
             this.cbxCategoria.MaxDropDownItems = 4;
             this.cbxCategoria.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbxCategoria.MouseState = MaterialSkin.MouseState.OUT;
@@ -265,7 +267,7 @@
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.IntegralHeight = false;
             this.cbxMarca.ItemHeight = 29;
-            this.cbxMarca.Location = new System.Drawing.Point(373, 322);
+            this.cbxMarca.Location = new System.Drawing.Point(379, 361);
             this.cbxMarca.MaxDropDownItems = 4;
             this.cbxMarca.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbxMarca.MouseState = MaterialSkin.MouseState.OUT;
@@ -284,7 +286,7 @@
             this.btnAceptar.Depth = 0;
             this.btnAceptar.HighEmphasis = true;
             this.btnAceptar.Icon = null;
-            this.btnAceptar.Location = new System.Drawing.Point(335, 380);
+            this.btnAceptar.Location = new System.Drawing.Point(337, 418);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAceptar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAceptar.Name = "btnAceptar";
@@ -299,11 +301,12 @@
             // btnCancelar
             // 
             this.btnCancelar.AutoSize = false;
+            this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCancelar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnCancelar.Depth = 0;
             this.btnCancelar.HighEmphasis = true;
             this.btnCancelar.Icon = null;
-            this.btnCancelar.Location = new System.Drawing.Point(461, 380);
+            this.btnCancelar.Location = new System.Drawing.Point(463, 418);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -316,11 +319,44 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
+            // txtStock
+            // 
+            this.txtStock.AnimateReadOnly = false;
+            this.txtStock.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStock.Depth = 0;
+            this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtStock.LeadingIcon = null;
+            this.txtStock.Location = new System.Drawing.Point(107, 267);
+            this.txtStock.MaximumSize = new System.Drawing.Size(250, 25);
+            this.txtStock.MaxLength = 50;
+            this.txtStock.MinimumSize = new System.Drawing.Size(250, 25);
+            this.txtStock.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtStock.Multiline = false;
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(250, 25);
+            this.txtStock.TabIndex = 29;
+            this.txtStock.Text = "";
+            this.txtStock.TrailingIcon = null;
+            this.txtStock.UseTallSize = false;
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(40, 269);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(38, 13);
+            this.lblStock.TabIndex = 28;
+            this.lblStock.Text = "Stock:";
+            this.lblStock.Click += new System.EventHandler(this.label1_Click);
+            // 
             // FrmAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 463);
+            this.ClientSize = new System.Drawing.Size(622, 507);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.lblStock);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cbxMarca);
@@ -366,5 +402,7 @@
         public MaterialSkin.Controls.MaterialComboBox cbxMarca;
         private MaterialSkin.Controls.MaterialButton btnAceptar;
         private MaterialSkin.Controls.MaterialButton btnCancelar;
+        public MaterialSkin.Controls.MaterialTextBox txtStock;
+        private System.Windows.Forms.Label lblStock;
     }
 }
