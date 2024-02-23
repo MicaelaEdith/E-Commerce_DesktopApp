@@ -30,7 +30,7 @@ namespace Presentacion
            int nWidthEllipse, // height of ellipse
            int nHeightEllipse // width of ellipse
        );
-
+        #region Constructores y Load
         public FrmAltaProducto()
         {
             InitializeComponent();
@@ -47,67 +47,6 @@ namespace Presentacion
             InitializeComponent();
             this.producto = producto;
             Text = "Modificar producto";
-
-        }
-
-        private bool validarAlta()
-        {
-
-            if (txtCodigo.Text == "" || txtNombre.Text == "" || txtDescripcion.Text == ""|| txtPrecio.Text == "")
-            {
-                MessageBox.Show("Por favor complete todas las características del producto.");
-                return false;
-            }
-            if (cbxCategoria.SelectedIndex < 0 || cbxMarca.SelectedIndex < 0)
-            {
-                MessageBox.Show("Por favor seleccione categoria y marca.");
-                return false;
-            }
-
-            return true;
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            ProductoNegocio negocio = new ProductoNegocio();
-                        
-            try
-            {
-                if (!validarAlta())
-                    return;
-               
-                if (producto == null)
-                    producto = new Producto();
-
-                    producto.Codigo = txtCodigo.Text;
-                    producto.Nombre = txtNombre.Text;
-                    producto.Descripcion = txtDescripcion.Text;
-                    producto.Marca = (Marca)cbxMarca.SelectedItem;
-                    producto.Categoria = (Categoria)cbxCategoria.SelectedItem;
-                    producto.Precio = decimal.Parse(txtPrecio.Text);
-                    producto.ImagenUrl = txtUrlImagen.Text;
-                    producto.Stock = int.Parse(txtStock.Text);
-
-
-                if (producto.Id != 0)
-                {
-                    negocio.modificar(producto);
-                    MessageBox.Show("El producto fue modificado exitosamente.");
-                    Close();
-                }
-                else
-                {
-                    negocio.agregar(producto);
-                    MessageBox.Show("El producto fue agregado exitosamente.");
-                    Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Por favor complete todos los campos.");
-            }
 
         }
 
@@ -158,19 +97,6 @@ namespace Presentacion
             }
         }
 
-        private void txtPrecio_TextChanged(object sender, EventArgs e)
-        {
-            ProductoNegocio negocio = new ProductoNegocio();
-            if (!negocio.validarPrecio(txtPrecio.ToString()))
-                txtPrecio.Clear();
-
-        }
-
-        private void txtUrlImagen_Leave(object sender, EventArgs e)
-        {
-            cargarImagen(txtUrlImagen.Text);
-        }
-
         private void cargarImagen(string imagen)
         {
             try
@@ -185,14 +111,107 @@ namespace Presentacion
 
         }
 
+        #endregion
+
+
+        #region Validaciones
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            if (!negocio.validarPrecio(txtPrecio.ToString()))
+                txtPrecio.Clear();
+
+        }       
+        private void txtStock_TextChanged(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            if (!negocio.validarPrecio(txtStock.ToString()))
+                txtPrecio.Clear();
+
+        }
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
+        
+        private bool validarAlta()
+        {
+
+            if (txtCodigo.Text == "" || txtNombre.Text == "" || txtDescripcion.Text == ""|| txtPrecio.Text == ""||txtStock.Text=="")
+            {
+                MessageBox.Show("Por favor complete todas las características del producto.");
+                return false;
+            }
+            if (cbxCategoria.SelectedIndex < 0 || cbxMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione categoria y marca.");
+                return false;
+            }
+            if (decimal.Parse(txtPrecio.Text) < 0 || int.Parse(txtStock.Text) < 0) {
+                MessageBox.Show("No puede ingresar números menores a 0.");
+                return false;
+
+            }
+
+            return true;
+        }
+
+        #endregion
+
+
+        #region Acciones
+        private void btnAceptar_Click_1(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+
+            try
+            {
+                if (!validarAlta())
+                    return;
+
+                if (producto == null)
+                    producto = new Producto();
+
+                producto.Codigo = txtCodigo.Text;
+                producto.Nombre = txtNombre.Text;
+                producto.Descripcion = txtDescripcion.Text;
+                producto.Marca = (Marca)cbxMarca.SelectedItem;
+                producto.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                producto.Precio = decimal.Parse(txtPrecio.Text);
+                producto.ImagenUrl = txtUrlImagen.Text;
+                producto.Stock = int.Parse(txtStock.Text);
+
+
+                if (producto.Id != 0)
+                {
+                    negocio.modificar(producto);
+                    MessageBox.Show("El producto fue modificado exitosamente.");
+                    Close();
+                }
+                else
+                {
+                    negocio.agregar(producto);
+                    MessageBox.Show("El producto fue agregado exitosamente.");
+                    Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Por favor complete todos los campos.");
+            }
+
+        }
+
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
+        #endregion
+
     }
 }

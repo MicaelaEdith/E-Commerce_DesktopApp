@@ -20,9 +20,12 @@ namespace Presentacion
     {
 
         private List<Producto> listaProductos;
-        private List<string> listaCarrito;
+        private List<Producto> listaCarrito = new List<Producto>();
         private decimal precioFinal;
+        private bool addCategoria=false;
+        private bool addMarca = false;
         Producto seleccionado;
+      
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -34,8 +37,10 @@ namespace Presentacion
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-        public Catalogo()
-        {
+
+        #region Constructos y carga de componentes
+
+        public Catalogo()        {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -48,14 +53,35 @@ namespace Presentacion
             txtPrecioMin.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMin.Width, txtPrecioMin.Height, 5, 5));
             txtPrecioMax.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMax.Width, txtPrecioMax.Height, 5, 5));
             txtBusqueda.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtBusqueda.Width, txtBusqueda.Height, 5, 5));
-            dgvProductos.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, dgvProductos.Width, dgvProductos.Height, 5, 5));
+            btnAgregarMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAgregarMarca.Width, btnAgregarMarca.Height, 5, 5));
             txtCarrito.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCarrito.Width, txtCarrito.Height, 5, 5));
             cbxCategorias.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategorias.Width, cbxCategorias.Height, 5, 5));
             cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
-            dgvProductos.ForeColor = Color.FromArgb(20, 20, 20);
-            
+            btnAgregarMarca.ForeColor = Color.FromArgb(20, 20, 20);
+            panelEliminar.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelEliminar.Width, panelEliminar.Height, 5, 5));
+            pnlMarcaNueva1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva1.Width, pnlMarcaNueva1.Height, 5, 5));
+            pnlMarcaNueva2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva2.Width, pnlMarcaNueva2.Height, 5, 5));
+            txtNuevaMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtNuevaMarca.Width, txtNuevaMarca.Height, 5, 5));
+
+            panelFondo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelFondo.Width, panelFondo.Height, 5, 5));
+            panelEliminar.Visible = false;
+            panelFondo.Visible = false;
+            lblSeEliminará.Visible = false;
+            lblProductoEliminar.Visible = false;
+            pnlMarcaNueva1.Visible = false;
+            pnlMarcaNueva2.Visible = false;
+            lblIngreseMarca.Visible = false;
+            txtNuevaMarca.Visible = false;
+
         }
 
+        private void Catalogo_Load(object sender, EventArgs e)
+        {
+            cargar();
+            cargarCampos();
+            establecerColor();
+        }
+        
         private void cargar()
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -63,12 +89,13 @@ namespace Presentacion
             try
             {
                 listaProductos = negocio.listaProductos();
-                dgvProductos.DataSource = listaProductos;
-                dgvProductos.Columns["imagenUrl"].Visible = false;
-                dgvProductos.Columns["Id"].Visible = false;
-                dgvProductos.Columns["Descripcion"].Visible = false;
-                dgvProductos.Columns["CantidadVentas"].Visible = false;
-                dgvProductos.ClearSelection();
+                btnAgregarMarca.DataSource = listaProductos;
+                btnAgregarMarca.Columns["imagenUrl"].Visible = false;
+                btnAgregarMarca.Columns["Id"].Visible = false;
+                btnAgregarMarca.Columns["Descripcion"].Visible = false;
+                btnAgregarMarca.Columns["CantidadVentas"].Visible = false;
+                btnAgregarMarca.Columns["CantidadEnticket"].Visible = false;
+                btnAgregarMarca.ClearSelection();
                 cargaImagen(listaProductos[0].ImagenUrl);
 
 
@@ -80,13 +107,6 @@ namespace Presentacion
                 throw ex;
             }
 
-        }
-
-        private void Catalogo_Load(object sender, EventArgs e)
-        {
-            cargar();
-            cargarCampos();
-            establecerColor();
         }
 
         private void cargaImagen(string imagen)
@@ -102,14 +122,6 @@ namespace Presentacion
                 pbxImagen.Image = null;
             }
 
-        }
-
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmAltaProducto alta = new FrmAltaProducto();
-            establecerColor();
-            alta.ShowDialog();
-            cargar();
         }
 
         private void cargarCampos()
@@ -133,7 +145,24 @@ namespace Presentacion
             }
 
         }
+       
+        private void establecerColor() {
 
+            txtPrecioMin.BackColor = Color.LightGray;
+            txtPrecioMax.BackColor = Color.LightGray;
+            txtBusqueda.BackColor = Color.LightGray;
+            menuStrip1.BackColor = Color.LightGray;
+            panelEliminar.BackColor = Color.White;
+            panelFondo.BackColor = Color.IndianRed;
+            pnlMarcaNueva1.BackColor = Color.Gray;
+            
+        }
+
+
+        #endregion
+
+
+        #region Busqueda
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             List<Producto> listaFiltrada;
@@ -147,61 +176,11 @@ namespace Presentacion
             {
                 listaFiltrada = listaProductos;
             }
-            dgvProductos.DataSource = null;
-            dgvProductos.DataSource = listaFiltrada;
-            dgvProductos.Columns["imagenUrl"].Visible = false;
-            dgvProductos.Columns["Id"].Visible = false;
-            dgvProductos.Columns["Descripcion"].Visible = false;
-        }
-
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvProductos.SelectedRows.Count > 0)
-            {
-
-                try
-
-                {
-                    Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                    establecerColor();
-                    FrmAltaProducto alta = new FrmAltaProducto(seleccionado);
-                    alta.ShowDialog();
-                    cargar();
-                }
-
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Por favor seleccione de la grilla el artículo para modificar.");
-
-                }
-            }
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProductoNegocio negocio = new ProductoNegocio();
-            if (dgvProductos.SelectedRows.Count > 0)
-            {
-                try
-                {
-                    establecerColor();
-                    Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                    DialogResult respuesta = MessageBox.Show("En caso que presione 'SI' el producto seleccionado será eliminado permanentemente. \n¿Desea eliminar el Producto seleccionado?", "¡Precaución!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if (respuesta == DialogResult.Yes)
-                    {
-                        negocio.eliminar(seleccionado.Id);
-                        cargar();
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Por favor seleccione de la grilla el artículo que desea eliminar.");
-                    cargar();
-                }
-            }
+            btnAgregarMarca.DataSource = null;
+            btnAgregarMarca.DataSource = listaFiltrada;
+            btnAgregarMarca.Columns["imagenUrl"].Visible = false;
+            btnAgregarMarca.Columns["Id"].Visible = false;
+            btnAgregarMarca.Columns["Descripcion"].Visible = false;
         }
 
         private void txtPrecioMin_TextChanged(object sender, EventArgs e)
@@ -218,19 +197,7 @@ namespace Presentacion
             if (!negocio.validarPrecio(txtPrecioMax.ToString()))
                 txtPrecioMax.Clear();
         }
-
-        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            seleccionGrilla();
-        }
-
-        private void seleccionGrilla()
-        {
-            seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-            
-            cargaImagen(seleccionado.ImagenUrl);
-        }
-
+       
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -249,7 +216,7 @@ namespace Presentacion
             if (negocio.validarBusqueda(minimo, maximo))
             {
                 listaProductos = negocio.buscar(minimo, maximo, categoria, marca);
-                dgvProductos.DataSource = listaProductos;
+                btnAgregarMarca.DataSource = listaProductos;
             }
             else
                 MessageBox.Show("El precio mínimo no debe superar al precio máximo de búsqueda.");
@@ -266,12 +233,175 @@ namespace Presentacion
 
         }
 
+
+        #endregion
+
+
+        #region Menu ToolStrip
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAltaProducto alta = new FrmAltaProducto();
+            establecerColor();
+            alta.ShowDialog();
+            cargar();
+        }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnAgregarMarca.SelectedRows.Count > 0)
+            {
+
+                try
+
+                {
+                    Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+                    establecerColor();
+                    FrmAltaProducto alta = new FrmAltaProducto(seleccionado);
+                    alta.ShowDialog();
+                    cargar();
+                }
+
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Por favor seleccione de la grilla el artículo para modificar.");
+
+                }
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnAgregarMarca.SelectedRows.Count > 0)
+            {
+
+                    establecerColor();
+                    Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+                    panelEliminar.Visible = true;
+                    panelFondo.Visible = true;
+                    lblSeEliminará.Visible = true;
+                    lblProductoEliminar.Text = seleccionado.Nombre;
+                    lblProductoEliminar.Visible = true;
+                    panelFondo.BringToFront();
+
+            }
+        }
+
+
+        private void btnAceptarEliminar_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            negocio.eliminar(seleccionado.Id);
+            panelEliminar.Visible = false;
+            panelFondo.Visible = false;
+            lblSeEliminará.Visible = false;
+            lblProductoEliminar.Visible = false;
+            lblProductoEliminar.Text = "";
+            cargar();
+        }
+
+        private void btnCancelarEliminar_Click(object sender, EventArgs e)
+        {
+            panelEliminar.Visible = false;
+            panelFondo.Visible = false;
+            lblSeEliminará.Visible = false;
+            lblProductoEliminar.Visible = false;
+            lblProductoEliminar.Text = "";
+        }
+
+        private void agregarToolStripMenuItem2_Click(object sender, EventArgs e) //Agregar Marca
+        {
+            addMarca = true;
+            addCategoria = false;
+            pnlMarcaNueva1.Visible = true;
+            pnlMarcaNueva2.Visible = true;
+            lblIngreseMarca.Visible = true;
+            txtNuevaMarca.Visible = true;
+            lblIngreseMarca.Text = "  Ingrese nombre de la marca";
+            pnlMarcaNueva1.BringToFront();
+
+        }
+
+        private void btnCancelarM_Click(object sender, EventArgs e)
+        {
+            pnlMarcaNueva1.Visible = false;
+            pnlMarcaNueva2.Visible = false;
+            lblIngreseMarca.Visible = false;
+            txtNuevaMarca.Visible = false;
+            addMarca = false;
+            addCategoria = false;
+            txtNuevaMarca.Text = "";
+        }
+
+        private void btnAgregarM_Click(object sender, EventArgs e)
+        {
+            string valor = txtNuevaMarca.Text;
+            if (addMarca) { 
+                MarcaNegocio mn = new MarcaNegocio();
+                mn.agregar(valor);
+                txtNuevaMarca.Text = "";
+            }
+            if (addCategoria)
+            {
+                CategoriaNegocio cn = new CategoriaNegocio();
+                cn.agregar(valor);
+                txtNuevaMarca.Text = "";
+            }
+            pnlMarcaNueva1.Visible = false;
+            pnlMarcaNueva2.Visible = false;
+            lblIngreseMarca.Visible = false;
+            txtNuevaMarca.Visible = false;
+            addMarca = false;
+            addCategoria = false;
+        }
+
+        private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)//Agregar Categoria
+        {
+            addCategoria = true;
+            addMarca = false;
+            pnlMarcaNueva1.Visible = true;
+            pnlMarcaNueva2.Visible = true;
+            lblIngreseMarca.Visible = true;
+            txtNuevaMarca.Visible = true;
+            lblIngreseMarca.Text = "Ingrese nombre de la Categoria";
+            pnlMarcaNueva1.BringToFront();
+        }
+
+        
+        #endregion
+
+
+        #region Selección de productos & Carrito
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            seleccionGrilla();
+        }
+
+        private void seleccionGrilla()
+        {
+            seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+            cargaImagen(seleccionado.ImagenUrl);
+        }
+
         private void btnAgregarItem_Click(object sender, EventArgs e)
         {
             if (seleccionado != null)
             {
+                Producto productoEnCarrito = listaCarrito.Find(p => p.Id == seleccionado.Id);
 
-                txtCarrito.Text += seleccionado.Nombre + " - $" + seleccionado.Precio+"\n";
+                if (productoEnCarrito != null)
+                {
+                    productoEnCarrito.CantidadEnticket++;
+
+                }
+                else
+                {
+                    seleccionado.CantidadEnticket = 1;
+                    listaCarrito.Add(seleccionado);
+                    
+                }
+                txtCarrito.Text += seleccionado.Nombre + " - $" + seleccionado.Precio + "\n";
                 precioFinal += seleccionado.Precio;
                 lblPrecioFinal.Text ="Precio Final: $"+ Math.Round(precioFinal,2).ToString();
                 lblPrecioFinal.Visible=true;
@@ -284,17 +414,37 @@ namespace Presentacion
             txtCarrito.Text="";
             lblPrecioFinal.Visible = false;
             precioFinal = 0;
+            listaCarrito.Clear();
         }
 
-        private void establecerColor() {
+        private void btnConfirmarVenta_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio pn = new ProductoNegocio();
+            TicketNegocio tn = new TicketNegocio();
+            tn.facturar(precioFinal);
+            
 
-            txtPrecioMin.BackColor = Color.LightGray;
-            txtPrecioMax.BackColor = Color.LightGray;
-            txtBusqueda.BackColor = Color.LightGray;
-            menuStrip1.BackColor = Color.LightGray;
+            foreach (var producto in listaCarrito) {
+
+                pn.agregarVenta(producto);
+                producto.ToString();
+            }
+
+            listaCarrito.Clear();
+            precioFinal = 0;
+            txtCarrito.Text = "";
+            lblPrecioFinal.Visible = false;
+            btnAgregarMarca.ClearSelection();
         }
 
+
+        #endregion
+
+        private void ventasMenuItem_Click(object sender, EventArgs e)
+        {
+
+            
+        }
     }
 
 }
-

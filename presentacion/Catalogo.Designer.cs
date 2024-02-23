@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +41,11 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.categoriasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.btnAgregarMarca = new System.Windows.Forms.DataGridView();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
@@ -59,12 +61,28 @@
             this.cbxMarca = new MaterialSkin.Controls.MaterialComboBox();
             this.btnAgregarItem = new MaterialSkin.Controls.MaterialButton();
             this.btnVaciar = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.btnConfirmarVenta = new MaterialSkin.Controls.MaterialButton();
             this.lblPrecioFinal = new System.Windows.Forms.Label();
             this.txtCarrito = new MaterialSkin.Controls.MaterialMultiLineTextBox();
+            this.panelEliminar = new System.Windows.Forms.Panel();
+            this.btnCancelarEliminar = new MaterialSkin.Controls.MaterialButton();
+            this.btnAceptarEliminar = new MaterialSkin.Controls.MaterialButton();
+            this.lblProductoEliminar = new MaterialSkin.Controls.MaterialLabel();
+            this.lblSeEliminará = new MaterialSkin.Controls.MaterialLabel();
+            this.panelFondo = new System.Windows.Forms.Panel();
+            this.pnlMarcaNueva1 = new System.Windows.Forms.Panel();
+            this.pnlMarcaNueva2 = new System.Windows.Forms.Panel();
+            this.txtNuevaMarca = new MaterialSkin.Controls.MaterialTextBox();
+            this.btnCancelarM = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregarM = new MaterialSkin.Controls.MaterialButton();
+            this.lblIngreseMarca = new MaterialSkin.Controls.MaterialLabel();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgregarMarca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
+            this.panelEliminar.SuspendLayout();
+            this.panelFondo.SuspendLayout();
+            this.pnlMarcaNueva1.SuspendLayout();
+            this.pnlMarcaNueva2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -147,82 +165,102 @@
             // 
             // categoriasMenuItem
             // 
+            this.categoriasMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem1});
             this.categoriasMenuItem.Name = "categoriasMenuItem";
             this.categoriasMenuItem.Size = new System.Drawing.Size(76, 34);
             this.categoriasMenuItem.Text = "Categorias";
             // 
+            // agregarToolStripMenuItem1
+            // 
+            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
+            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
+            this.agregarToolStripMenuItem1.Text = "Agregar Categoria";
+            this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
+            // 
             // marcasMenuItem
             // 
+            this.marcasMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem2});
             this.marcasMenuItem.Name = "marcasMenuItem";
             this.marcasMenuItem.Size = new System.Drawing.Size(57, 34);
             this.marcasMenuItem.Text = "Marcas";
+            // 
+            // agregarToolStripMenuItem2
+            // 
+            this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
+            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(154, 22);
+            this.agregarToolStripMenuItem2.Text = "Agregar Marca";
+            this.agregarToolStripMenuItem2.Click += new System.EventHandler(this.agregarToolStripMenuItem2_Click);
             // 
             // ventasMenuItem
             // 
             this.ventasMenuItem.Name = "ventasMenuItem";
             this.ventasMenuItem.Size = new System.Drawing.Size(56, 34);
             this.ventasMenuItem.Text = "Ventas";
+            this.ventasMenuItem.Click += new System.EventHandler(this.ventasMenuItem_Click);
             // 
-            // dgvProductos
+            // btnAgregarMarca
             // 
-            this.dgvProductos.AllowUserToAddRows = false;
-            this.dgvProductos.AllowUserToDeleteRows = false;
-            this.dgvProductos.AllowUserToResizeColumns = false;
-            this.dgvProductos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
-            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnAgregarMarca.AllowUserToAddRows = false;
+            this.btnAgregarMarca.AllowUserToDeleteRows = false;
+            this.btnAgregarMarca.AllowUserToResizeColumns = false;
+            this.btnAgregarMarca.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnAgregarMarca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.btnAgregarMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
-            this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
-            this.dgvProductos.ColumnHeadersHeight = 40;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle48;
-            this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProductos.EnableHeadersVisualStyles = false;
-            this.dgvProductos.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvProductos.Location = new System.Drawing.Point(28, 155);
-            this.dgvProductos.MultiSelect = false;
-            this.dgvProductos.Name = "dgvProductos";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
-            this.dgvProductos.RowHeadersVisible = false;
-            this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle50;
-            this.dgvProductos.RowTemplate.Height = 30;
-            this.dgvProductos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(707, 355);
-            this.dgvProductos.StandardTab = true;
-            this.dgvProductos.TabIndex = 7;
-            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
+            this.btnAgregarMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.btnAgregarMarca.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.btnAgregarMarca.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.btnAgregarMarca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.btnAgregarMarca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAgregarMarca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.btnAgregarMarca.ColumnHeadersHeight = 40;
+            this.btnAgregarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnAgregarMarca.DefaultCellStyle = dataGridViewCellStyle3;
+            this.btnAgregarMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.btnAgregarMarca.EnableHeadersVisualStyles = false;
+            this.btnAgregarMarca.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAgregarMarca.Location = new System.Drawing.Point(28, 155);
+            this.btnAgregarMarca.MultiSelect = false;
+            this.btnAgregarMarca.Name = "btnAgregarMarca";
+            this.btnAgregarMarca.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAgregarMarca.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.btnAgregarMarca.RowHeadersVisible = false;
+            this.btnAgregarMarca.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnAgregarMarca.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.btnAgregarMarca.RowTemplate.Height = 30;
+            this.btnAgregarMarca.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnAgregarMarca.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.btnAgregarMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.btnAgregarMarca.Size = new System.Drawing.Size(707, 355);
+            this.btnAgregarMarca.StandardTab = true;
+            this.btnAgregarMarca.TabIndex = 7;
+            this.btnAgregarMarca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // lblCategoria
             // 
@@ -449,24 +487,25 @@
             this.btnVaciar.UseVisualStyleBackColor = true;
             this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
             // 
-            // materialButton1
+            // btnConfirmarVenta
             // 
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(767, 539);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Size = new System.Drawing.Size(156, 36);
-            this.materialButton1.TabIndex = 21;
-            this.materialButton1.Text = "Confirmar Venta";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
+            this.btnConfirmarVenta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnConfirmarVenta.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnConfirmarVenta.Depth = 0;
+            this.btnConfirmarVenta.HighEmphasis = true;
+            this.btnConfirmarVenta.Icon = null;
+            this.btnConfirmarVenta.Location = new System.Drawing.Point(767, 539);
+            this.btnConfirmarVenta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnConfirmarVenta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnConfirmarVenta.Name = "btnConfirmarVenta";
+            this.btnConfirmarVenta.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnConfirmarVenta.Size = new System.Drawing.Size(156, 36);
+            this.btnConfirmarVenta.TabIndex = 21;
+            this.btnConfirmarVenta.Text = "Confirmar Venta";
+            this.btnConfirmarVenta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnConfirmarVenta.UseAccentColor = false;
+            this.btnConfirmarVenta.UseVisualStyleBackColor = true;
+            this.btnConfirmarVenta.Click += new System.EventHandler(this.btnConfirmarVenta_Click);
             // 
             // lblPrecioFinal
             // 
@@ -496,15 +535,194 @@
             this.txtCarrito.TabIndex = 24;
             this.txtCarrito.Text = "";
             // 
+            // panelEliminar
+            // 
+            this.panelEliminar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panelEliminar.Controls.Add(this.btnCancelarEliminar);
+            this.panelEliminar.Controls.Add(this.btnAceptarEliminar);
+            this.panelEliminar.Controls.Add(this.lblProductoEliminar);
+            this.panelEliminar.Controls.Add(this.lblSeEliminará);
+            this.panelEliminar.Location = new System.Drawing.Point(5, 5);
+            this.panelEliminar.Name = "panelEliminar";
+            this.panelEliminar.Size = new System.Drawing.Size(277, 192);
+            this.panelEliminar.TabIndex = 25;
+            // 
+            // btnCancelarEliminar
+            // 
+            this.btnCancelarEliminar.AutoSize = false;
+            this.btnCancelarEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelarEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCancelarEliminar.Depth = 0;
+            this.btnCancelarEliminar.HighEmphasis = true;
+            this.btnCancelarEliminar.Icon = null;
+            this.btnCancelarEliminar.Location = new System.Drawing.Point(152, 122);
+            this.btnCancelarEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancelarEliminar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelarEliminar.Name = "btnCancelarEliminar";
+            this.btnCancelarEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCancelarEliminar.Size = new System.Drawing.Size(98, 32);
+            this.btnCancelarEliminar.TabIndex = 3;
+            this.btnCancelarEliminar.Text = "cancelar";
+            this.btnCancelarEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCancelarEliminar.UseAccentColor = false;
+            this.btnCancelarEliminar.UseVisualStyleBackColor = true;
+            this.btnCancelarEliminar.Click += new System.EventHandler(this.btnCancelarEliminar_Click);
+            // 
+            // btnAceptarEliminar
+            // 
+            this.btnAceptarEliminar.AutoSize = false;
+            this.btnAceptarEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAceptarEliminar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAceptarEliminar.Depth = 0;
+            this.btnAceptarEliminar.HighEmphasis = true;
+            this.btnAceptarEliminar.Icon = null;
+            this.btnAceptarEliminar.Location = new System.Drawing.Point(26, 122);
+            this.btnAceptarEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAceptarEliminar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAceptarEliminar.Name = "btnAceptarEliminar";
+            this.btnAceptarEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAceptarEliminar.Size = new System.Drawing.Size(98, 32);
+            this.btnAceptarEliminar.TabIndex = 2;
+            this.btnAceptarEliminar.Text = "Aceptar";
+            this.btnAceptarEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAceptarEliminar.UseAccentColor = false;
+            this.btnAceptarEliminar.UseVisualStyleBackColor = true;
+            this.btnAceptarEliminar.Click += new System.EventHandler(this.btnAceptarEliminar_Click);
+            // 
+            // lblProductoEliminar
+            // 
+            this.lblProductoEliminar.AutoSize = true;
+            this.lblProductoEliminar.Depth = 0;
+            this.lblProductoEliminar.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblProductoEliminar.Location = new System.Drawing.Point(73, 63);
+            this.lblProductoEliminar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblProductoEliminar.Name = "lblProductoEliminar";
+            this.lblProductoEliminar.Size = new System.Drawing.Size(119, 19);
+            this.lblProductoEliminar.TabIndex = 1;
+            this.lblProductoEliminar.Text = "nombreProducto";
+            // 
+            // lblSeEliminará
+            // 
+            this.lblSeEliminará.AutoSize = true;
+            this.lblSeEliminará.Depth = 0;
+            this.lblSeEliminará.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblSeEliminará.Location = new System.Drawing.Point(48, 14);
+            this.lblSeEliminará.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblSeEliminará.Name = "lblSeEliminará";
+            this.lblSeEliminará.Size = new System.Drawing.Size(173, 19);
+            this.lblSeEliminará.TabIndex = 0;
+            this.lblSeEliminará.Text = "Se Eliminará el producto";
+            // 
+            // panelFondo
+            // 
+            this.panelFondo.Controls.Add(this.panelEliminar);
+            this.panelFondo.Location = new System.Drawing.Point(323, 166);
+            this.panelFondo.Name = "panelFondo";
+            this.panelFondo.Size = new System.Drawing.Size(287, 203);
+            this.panelFondo.TabIndex = 26;
+            // 
+            // pnlMarcaNueva1
+            // 
+            this.pnlMarcaNueva1.Controls.Add(this.pnlMarcaNueva2);
+            this.pnlMarcaNueva1.Location = new System.Drawing.Point(290, 107);
+            this.pnlMarcaNueva1.Name = "pnlMarcaNueva1";
+            this.pnlMarcaNueva1.Size = new System.Drawing.Size(287, 203);
+            this.pnlMarcaNueva1.TabIndex = 27;
+            // 
+            // pnlMarcaNueva2
+            // 
+            this.pnlMarcaNueva2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMarcaNueva2.Controls.Add(this.txtNuevaMarca);
+            this.pnlMarcaNueva2.Controls.Add(this.btnCancelarM);
+            this.pnlMarcaNueva2.Controls.Add(this.btnAgregarM);
+            this.pnlMarcaNueva2.Controls.Add(this.lblIngreseMarca);
+            this.pnlMarcaNueva2.Location = new System.Drawing.Point(5, 5);
+            this.pnlMarcaNueva2.Name = "pnlMarcaNueva2";
+            this.pnlMarcaNueva2.Size = new System.Drawing.Size(277, 192);
+            this.pnlMarcaNueva2.TabIndex = 25;
+            // 
+            // txtNuevaMarca
+            // 
+            this.txtNuevaMarca.AnimateReadOnly = false;
+            this.txtNuevaMarca.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNuevaMarca.Depth = 0;
+            this.txtNuevaMarca.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNuevaMarca.LeadingIcon = null;
+            this.txtNuevaMarca.Location = new System.Drawing.Point(34, 69);
+            this.txtNuevaMarca.MaxLength = 50;
+            this.txtNuevaMarca.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtNuevaMarca.Multiline = false;
+            this.txtNuevaMarca.Name = "txtNuevaMarca";
+            this.txtNuevaMarca.Size = new System.Drawing.Size(208, 36);
+            this.txtNuevaMarca.TabIndex = 4;
+            this.txtNuevaMarca.Text = "";
+            this.txtNuevaMarca.TrailingIcon = null;
+            this.txtNuevaMarca.UseTallSize = false;
+            // 
+            // btnCancelarM
+            // 
+            this.btnCancelarM.AutoSize = false;
+            this.btnCancelarM.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelarM.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCancelarM.Depth = 0;
+            this.btnCancelarM.HighEmphasis = true;
+            this.btnCancelarM.Icon = null;
+            this.btnCancelarM.Location = new System.Drawing.Point(152, 122);
+            this.btnCancelarM.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancelarM.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelarM.Name = "btnCancelarM";
+            this.btnCancelarM.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCancelarM.Size = new System.Drawing.Size(98, 32);
+            this.btnCancelarM.TabIndex = 3;
+            this.btnCancelarM.Text = "cancelar";
+            this.btnCancelarM.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCancelarM.UseAccentColor = false;
+            this.btnCancelarM.UseVisualStyleBackColor = true;
+            this.btnCancelarM.Click += new System.EventHandler(this.btnCancelarM_Click);
+            // 
+            // btnAgregarM
+            // 
+            this.btnAgregarM.AutoSize = false;
+            this.btnAgregarM.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarM.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarM.Depth = 0;
+            this.btnAgregarM.HighEmphasis = true;
+            this.btnAgregarM.Icon = null;
+            this.btnAgregarM.Location = new System.Drawing.Point(26, 122);
+            this.btnAgregarM.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarM.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarM.Name = "btnAgregarM";
+            this.btnAgregarM.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarM.Size = new System.Drawing.Size(98, 32);
+            this.btnAgregarM.TabIndex = 2;
+            this.btnAgregarM.Text = "Agregar";
+            this.btnAgregarM.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarM.UseAccentColor = false;
+            this.btnAgregarM.UseVisualStyleBackColor = true;
+            this.btnAgregarM.Click += new System.EventHandler(this.btnAgregarM_Click);
+            // 
+            // lblIngreseMarca
+            // 
+            this.lblIngreseMarca.AutoSize = true;
+            this.lblIngreseMarca.Depth = 0;
+            this.lblIngreseMarca.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblIngreseMarca.Location = new System.Drawing.Point(27, 34);
+            this.lblIngreseMarca.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblIngreseMarca.Name = "lblIngreseMarca";
+            this.lblIngreseMarca.Size = new System.Drawing.Size(1, 0);
+            this.lblIngreseMarca.TabIndex = 0;
+            // 
             // Catalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(970, 604);
+            this.Controls.Add(this.pnlMarcaNueva1);
+            this.Controls.Add(this.panelFondo);
             this.Controls.Add(this.txtCarrito);
             this.Controls.Add(this.lblPrecioFinal);
-            this.Controls.Add(this.materialButton1);
+            this.Controls.Add(this.btnConfirmarVenta);
             this.Controls.Add(this.btnVaciar);
             this.Controls.Add(this.btnAgregarItem);
             this.Controls.Add(this.cbxMarca);
@@ -521,7 +739,7 @@
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.dgvProductos);
+            this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(970, 604);
@@ -534,8 +752,14 @@
             this.Load += new System.EventHandler(this.Catalogo_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgregarMarca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
+            this.panelEliminar.ResumeLayout(false);
+            this.panelEliminar.PerformLayout();
+            this.panelFondo.ResumeLayout(false);
+            this.pnlMarcaNueva1.ResumeLayout(false);
+            this.pnlMarcaNueva2.ResumeLayout(false);
+            this.pnlMarcaNueva2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,7 +772,7 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.DataGridView btnAgregarMarca;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblPrecio;
@@ -566,11 +790,25 @@
         private System.Windows.Forms.ToolStripMenuItem ventasMenuItem;
         private MaterialSkin.Controls.MaterialButton btnAgregarItem;
         private MaterialSkin.Controls.MaterialButton btnVaciar;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton btnConfirmarVenta;
         public System.Windows.Forms.Label lblPrecioFinal;
         public System.Windows.Forms.TextBox txtBusqueda;
         public System.Windows.Forms.MenuStrip menuStrip1;
         private MaterialSkin.Controls.MaterialMultiLineTextBox txtCarrito;
+        private System.Windows.Forms.Panel panelEliminar;
+        private System.Windows.Forms.Panel panelFondo;
+        private MaterialSkin.Controls.MaterialLabel lblSeEliminará;
+        private MaterialSkin.Controls.MaterialButton btnCancelarEliminar;
+        private MaterialSkin.Controls.MaterialButton btnAceptarEliminar;
+        private MaterialSkin.Controls.MaterialLabel lblProductoEliminar;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem2;
+        private System.Windows.Forms.Panel pnlMarcaNueva1;
+        private System.Windows.Forms.Panel pnlMarcaNueva2;
+        private MaterialSkin.Controls.MaterialButton btnCancelarM;
+        private MaterialSkin.Controls.MaterialButton btnAgregarM;
+        private MaterialSkin.Controls.MaterialLabel lblIngreseMarca;
+        private MaterialSkin.Controls.MaterialTextBox txtNuevaMarca;
     }
 }
 

@@ -55,80 +55,6 @@ namespace Negocio
             }
         }
 
-        public void agregar(Producto nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.Consulta("insert into ARTICULOS(Codigo, Nombre,Descripcion,ImagenUrl,Precio, IdCategoria,IdMarca)Values(@Codigo,@Nombre,@Descripcion,@ImagenUrl,@Precio,@IdCategoria,@IdMarca)");
-                datos.setearParametro("@Codigo", nuevo.Codigo);
-                datos.setearParametro("@Nombre", nuevo.Nombre);
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
-                datos.setearParametro("@Precio",nuevo.Precio);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
-                datos.setearParametro("@IdMarca", nuevo.Marca.Id);
-                datos.Insertar();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
-
-        public void modificar(Producto producto)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.Consulta("update ARTICULOS set codigo=@codigo,nombre=@nombre,descripcion=@descripcion,idMarca=@idMarca,idCategoria=@idCategoria,imagenUrl=@img, precio=@precio where Id=@id");
-                datos.setearParametro("@codigo",producto.Codigo);
-                datos.setearParametro("@nombre",producto.Nombre);
-                datos.setearParametro("@descripcion",producto.Descripcion);
-                datos.setearParametro("@idMarca",producto.Marca.Id);
-                datos.setearParametro("@idCategoria",producto.Categoria.Id);
-                datos.setearParametro("@img",producto.ImagenUrl);
-                datos.setearParametro("@precio",producto.Precio);
-                datos.setearParametro("@id",producto.Id);
-
-                datos.Insertar();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
-
-        public void eliminar(int id)
-        {
-            try
-            {
-                AccesoDatos datos = new AccesoDatos();
-                datos.Consulta("DELETE FROM ARTICULOS where Id=@id");
-                datos.setearParametro("@id", id);
-                datos.Insertar();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
         public List<Producto> buscar(string min, string max, string categoria, string marca)
         {
             if (min == "") min = "0";
@@ -190,6 +116,106 @@ namespace Negocio
                 }
 
         }
+       
+        public void agregar(Producto nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.Consulta("insert into ARTICULOS(Codigo, Nombre,Descripcion,ImagenUrl,Precio, IdCategoria,IdMarca, Stock, CantidadVentas)Values(@Codigo,@Nombre,@Descripcion,@ImagenUrl,@Precio,@IdCategoria,@IdMarca,@Stock,0)");
+                datos.setearParametro("@Codigo", nuevo.Codigo);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
+                datos.setearParametro("@Precio",nuevo.Precio);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@IdMarca", nuevo.Marca.Id);
+                datos.setearParametro("@Stock", nuevo.Stock);
+
+                datos.Insertar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void modificar(Producto producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.Consulta("update ARTICULOS set codigo=@codigo,nombre=@nombre,descripcion=@descripcion,idMarca=@idMarca,idCategoria=@idCategoria,imagenUrl=@img, precio=@precio, stock=@stock where Id=@id");
+                datos.setearParametro("@codigo",producto.Codigo);
+                datos.setearParametro("@nombre",producto.Nombre);
+                datos.setearParametro("@descripcion",producto.Descripcion);
+                datos.setearParametro("@idMarca",producto.Marca.Id);
+                datos.setearParametro("@idCategoria",producto.Categoria.Id);
+                datos.setearParametro("@img",producto.ImagenUrl);
+                datos.setearParametro("@precio",producto.Precio);
+                datos.setearParametro("@stock", producto.Stock);
+                datos.setearParametro("@id",producto.Id);
+
+                datos.Insertar();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void agregarVenta(Producto producto) {
+
+
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.Consulta("update articulos set Stock=@stock, cantidadventas=@ventas where Id=@id");
+                datos.setearParametro("@id", producto.Id);
+                datos.setearParametro("@stock", producto.Stock-producto.CantidadEnticket);
+                datos.setearParametro("@ventas", producto.CantidadVentas+ producto.CantidadEnticket);
+                datos.Insertar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+
+        }
+
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.Consulta("DELETE FROM ARTICULOS where Id=@id");
+                datos.setearParametro("@id", id);
+                datos.Insertar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public bool validarPrecio(string valor)
         {
@@ -222,6 +248,7 @@ namespace Negocio
                 return false;
 
         }
+
     }
 }
 

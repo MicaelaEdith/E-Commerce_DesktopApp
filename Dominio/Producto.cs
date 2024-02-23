@@ -32,6 +32,13 @@ namespace Dominio
 
         public int CantidadVentas { get; set; }
 
+        public int CantidadEnticket { get; set; }
+
+        public void ToString() {
+
+            Console.WriteLine("Producto: " + this.Nombre + " - Cantidad por Ticket: " + this.CantidadEnticket);
+        }
+
     }
 
 

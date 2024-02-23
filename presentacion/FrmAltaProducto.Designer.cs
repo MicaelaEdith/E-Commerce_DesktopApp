@@ -297,6 +297,7 @@
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click_1);
             // 
             // btnCancelar
             // 
@@ -325,7 +326,7 @@
             this.txtStock.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.txtStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtStock.Depth = 0;
-            this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtStock.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtStock.LeadingIcon = null;
             this.txtStock.Location = new System.Drawing.Point(107, 267);
             this.txtStock.MaximumSize = new System.Drawing.Size(250, 25);
@@ -339,6 +340,7 @@
             this.txtStock.Text = "";
             this.txtStock.TrailingIcon = null;
             this.txtStock.UseTallSize = false;
+            this.txtStock.TextChanged += new System.EventHandler(this.txtStock_TextChanged);
             // 
             // lblStock
             // 
@@ -348,7 +350,6 @@
             this.lblStock.Size = new System.Drawing.Size(38, 13);
             this.lblStock.TabIndex = 28;
             this.lblStock.Text = "Stock:";
-            this.lblStock.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmAltaProducto
             // 

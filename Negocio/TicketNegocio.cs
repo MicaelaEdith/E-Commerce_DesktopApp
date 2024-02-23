@@ -8,15 +8,16 @@ using Dominio;
 
 namespace Negocio
 {
-    class TicketNegocio
+    public class TicketNegocio
     {
-        public void agregar(Ticket ticket)
+        public void facturar(decimal valor)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.Consulta("insert into TICKETS values ("+ticket.valor+");");
+                datos.setearParametro("@valor", valor);
+                datos.Consulta("insert  into tickets (valor) values(@valor);");
                 datos.Insertar();
             }
             catch (Exception ex)
