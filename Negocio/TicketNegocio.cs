@@ -31,5 +31,38 @@ namespace Negocio
             }
 
         }
+
+        public decimal obtenerPromedio() {
+            
+            AccesoDatos datos = new AccesoDatos();
+            decimal promedio = 0;
+            decimal sumaValores = 0;
+            int totalValores = 0;
+
+
+            try
+            {
+                datos.Consulta("SELECT valor FROM tickets;");
+                datos.Leer();
+                while (datos.Lector.Read())
+                {
+                    decimal valor = datos.Lector.GetDecimal(0);
+                    sumaValores += valor;
+                    totalValores++;
+                }
+                promedio = totalValores > 0 ? sumaValores / totalValores : 0;
+                return Math.Round(promedio,2);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

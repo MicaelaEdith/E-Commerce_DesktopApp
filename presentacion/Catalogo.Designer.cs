@@ -695,7 +695,7 @@
             this.btnAgregarM.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAgregarM.Size = new System.Drawing.Size(98, 32);
             this.btnAgregarM.TabIndex = 2;
-            this.btnAgregarM.Text = "Agregar";
+            this.btnAgregarM.Text = "Aceptar";
             this.btnAgregarM.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAgregarM.UseAccentColor = false;
             this.btnAgregarM.UseVisualStyleBackColor = true;

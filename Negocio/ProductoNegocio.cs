@@ -249,6 +249,40 @@ namespace Negocio
 
         }
 
+        public List<Producto> top5()
+        {
+            List<Producto> listaProductos = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.Consulta("SELECT TOP 5 id, nombre, cantidadVentas FROM articulos ORDER BY cantidadVentas DESC;");
+                datos.Leer();
+
+                while (datos.Lector.Read())
+                {
+                    Producto aux = new Producto();
+                    aux.Id = (int)datos.Lector["Id"];;
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.CantidadVentas = (int)datos.Lector["CantidadVentas"];
+
+                    listaProductos.Add(aux);
+                }
+                return listaProductos;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }
 

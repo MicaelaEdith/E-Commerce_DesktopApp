@@ -15,7 +15,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.Consulta("SELECT ID,Descripcion from MARCAS");
+                datos.Consulta("SELECT ID,Descripcion from MARCAS ORDER BY Descripcion");
                 datos.Leer();
 
                 while (datos.Lector.Read())

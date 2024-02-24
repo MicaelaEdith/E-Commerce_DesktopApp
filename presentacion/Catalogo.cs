@@ -24,6 +24,7 @@ namespace Presentacion
         private decimal precioFinal;
         private bool addCategoria=false;
         private bool addMarca = false;
+        private bool confirmarVenta = false;
         Producto seleccionado;
       
 
@@ -82,6 +83,7 @@ namespace Presentacion
             establecerColor();
         }
         
+    
         private void cargar()
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -237,7 +239,7 @@ namespace Presentacion
         #endregion
 
 
-        #region Menu ToolStrip
+        #region Menu ToolStrip - Paneles (marca - categoria - confirmar venta)
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAltaProducto alta = new FrmAltaProducto();
@@ -287,7 +289,6 @@ namespace Presentacion
             }
         }
 
-
         private void btnAceptarEliminar_Click(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -330,10 +331,11 @@ namespace Presentacion
             txtNuevaMarca.Visible = false;
             addMarca = false;
             addCategoria = false;
+            confirmarVenta = false;
             txtNuevaMarca.Text = "";
         }
 
-        private void btnAgregarM_Click(object sender, EventArgs e)
+        private void btnAgregarM_Click(object sender, EventArgs e) //agregar Marca - Categoria - ConfirmarVenta
         {
             string valor = txtNuevaMarca.Text;
             if (addMarca) { 
@@ -347,12 +349,33 @@ namespace Presentacion
                 cn.agregar(valor);
                 txtNuevaMarca.Text = "";
             }
+            if (confirmarVenta) {
+                ProductoNegocio pn = new ProductoNegocio();
+                TicketNegocio tn = new TicketNegocio();
+                tn.facturar(precioFinal);
+
+
+                foreach (var producto in listaCarrito)
+                {
+
+                    pn.agregarVenta(producto);
+                    producto.ToString();
+                }
+
+                listaCarrito.Clear();
+                precioFinal = 0;
+                txtCarrito.Text = "";
+                lblPrecioFinal.Visible = false;
+                btnAgregarMarca.ClearSelection();
+                txtNuevaMarca.Text = "";
+            }
             pnlMarcaNueva1.Visible = false;
             pnlMarcaNueva2.Visible = false;
             lblIngreseMarca.Visible = false;
             txtNuevaMarca.Visible = false;
             addMarca = false;
             addCategoria = false;
+            confirmarVenta = false;
         }
 
         private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)//Agregar Categoria
@@ -367,6 +390,13 @@ namespace Presentacion
             pnlMarcaNueva1.BringToFront();
         }
 
+        private void ventasMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVentas ventas = new FrmVentas();
+            ventas.ShowDialog();
+            establecerColor();
+            cargar();
+        }
         
         #endregion
 
@@ -419,32 +449,26 @@ namespace Presentacion
 
         private void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-            ProductoNegocio pn = new ProductoNegocio();
-            TicketNegocio tn = new TicketNegocio();
-            tn.facturar(precioFinal);
-            
+            if (listaCarrito.Count > 0)
+            {
 
-            foreach (var producto in listaCarrito) {
+                confirmarVenta = true;
+                addMarca = false;
+                addCategoria = false;
+                pnlMarcaNueva1.Visible = true;
+                pnlMarcaNueva2.Visible = true;
+                lblIngreseMarca.Visible = true;
+                lblIngreseMarca.Text = "   ¿Desea confirmar la venta?";
+                pnlMarcaNueva1.BringToFront();
 
-                pn.agregarVenta(producto);
-                producto.ToString();
             }
 
-            listaCarrito.Clear();
-            precioFinal = 0;
-            txtCarrito.Text = "";
-            lblPrecioFinal.Visible = false;
-            btnAgregarMarca.ClearSelection();
+           
         }
 
 
         #endregion
 
-        private void ventasMenuItem_Click(object sender, EventArgs e)
-        {
-
-            
-        }
     }
 
 }
