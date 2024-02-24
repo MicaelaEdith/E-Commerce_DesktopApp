@@ -22,11 +22,16 @@ namespace Presentacion
         private List<Producto> listaProductos;
         private List<Producto> listaCarrito = new List<Producto>();
         private decimal precioFinal;
-        private bool addCategoria=false;
+        private bool addCategoria = false;
         private bool addMarca = false;
         private bool confirmarVenta = false;
+
+        Helper helper = new Helper();
+        private int color;  //0 azul, 1 verde, 2 rosa, 3 amarillo, 4 negro;
+       
+
         Producto seleccionado;
-      
+
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -41,38 +46,11 @@ namespace Presentacion
 
         #region Constructos y carga de componentes
 
-        public Catalogo()        {
+        public Catalogo()
+        {
+            color=helper.seleccionarColor();
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.LightBlue900, Primary.LightBlue900,
-            Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
-            this.FormBorderStyle = FormBorderStyle.None;
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
-            txtPrecioMin.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMin.Width, txtPrecioMin.Height, 5, 5));
-            txtPrecioMax.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMax.Width, txtPrecioMax.Height, 5, 5));
-            txtBusqueda.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtBusqueda.Width, txtBusqueda.Height, 5, 5));
-            btnAgregarMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAgregarMarca.Width, btnAgregarMarca.Height, 5, 5));
-            txtCarrito.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCarrito.Width, txtCarrito.Height, 5, 5));
-            cbxCategorias.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategorias.Width, cbxCategorias.Height, 5, 5));
-            cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
-            btnAgregarMarca.ForeColor = Color.FromArgb(20, 20, 20);
-            panelEliminar.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelEliminar.Width, panelEliminar.Height, 5, 5));
-            pnlMarcaNueva1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva1.Width, pnlMarcaNueva1.Height, 5, 5));
-            pnlMarcaNueva2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva2.Width, pnlMarcaNueva2.Height, 5, 5));
-            txtNuevaMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtNuevaMarca.Width, txtNuevaMarca.Height, 5, 5));
-
-            panelFondo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelFondo.Width, panelFondo.Height, 5, 5));
-            panelEliminar.Visible = false;
-            panelFondo.Visible = false;
-            lblSeEliminará.Visible = false;
-            lblProductoEliminar.Visible = false;
-            pnlMarcaNueva1.Visible = false;
-            pnlMarcaNueva2.Visible = false;
-            lblIngreseMarca.Visible = false;
-            txtNuevaMarca.Visible = false;
+            establecerModo();
 
         }
 
@@ -82,8 +60,8 @@ namespace Presentacion
             cargarCampos();
             establecerColor();
         }
-        
-    
+
+
         private void cargar()
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -147,9 +125,70 @@ namespace Presentacion
             }
 
         }
-       
-        private void establecerColor() {
 
+        private void establecerModo() {
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+            txtPrecioMin.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMin.Width, txtPrecioMin.Height, 5, 5));
+            txtPrecioMax.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMax.Width, txtPrecioMax.Height, 5, 5));
+            txtBusqueda.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtBusqueda.Width, txtBusqueda.Height, 5, 5));
+            btnAgregarMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAgregarMarca.Width, btnAgregarMarca.Height, 5, 5));
+            txtCarrito.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCarrito.Width, txtCarrito.Height, 5, 5));
+            cbxCategorias.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategorias.Width, cbxCategorias.Height, 5, 5));
+            cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
+            btnAgregarMarca.ForeColor = Color.FromArgb(20, 20, 20);
+            panelEliminar.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelEliminar.Width, panelEliminar.Height, 5, 5));
+            pnlMarcaNueva1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva1.Width, pnlMarcaNueva1.Height, 5, 5));
+            pnlMarcaNueva2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva2.Width, pnlMarcaNueva2.Height, 5, 5));
+            txtNuevaMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtNuevaMarca.Width, txtNuevaMarca.Height, 5, 5));
+
+            panelFondo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelFondo.Width, panelFondo.Height, 5, 5));
+            panelEliminar.Visible = false;
+            panelFondo.Visible = false;
+            lblSeEliminará.Visible = false;
+            lblProductoEliminar.Visible = false;
+            pnlMarcaNueva1.Visible = false;
+            pnlMarcaNueva2.Visible = false;
+            lblIngreseMarca.Visible = false;
+            txtNuevaMarca.Visible = false;
+
+            if (color == 0)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.LightBlue900, Primary.LightBlue900,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 1)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green400, Primary.Green400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 2)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Pink400, Primary.Pink400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 3)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Amber600, Primary.Amber600,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 4)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Grey800, Primary.Grey800,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+        }
+        private void establecerColor()
+        {
             txtPrecioMin.BackColor = Color.LightGray;
             txtPrecioMax.BackColor = Color.LightGray;
             txtBusqueda.BackColor = Color.LightGray;
@@ -157,12 +196,11 @@ namespace Presentacion
             panelEliminar.BackColor = Color.White;
             panelFondo.BackColor = Color.IndianRed;
             pnlMarcaNueva1.BackColor = Color.Gray;
-            
+
         }
 
 
         #endregion
-
 
         #region Busqueda
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -199,7 +237,7 @@ namespace Presentacion
             if (!negocio.validarPrecio(txtPrecioMax.ToString()))
                 txtPrecioMax.Clear();
         }
-       
+
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -238,11 +276,10 @@ namespace Presentacion
 
         #endregion
 
-
         #region Menu ToolStrip - Paneles (marca - categoria - confirmar venta)
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAltaProducto alta = new FrmAltaProducto();
+            FrmAltaProducto alta = new FrmAltaProducto(color);
             establecerColor();
             alta.ShowDialog();
             cargar();
@@ -258,7 +295,7 @@ namespace Presentacion
                 {
                     Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
                     establecerColor();
-                    FrmAltaProducto alta = new FrmAltaProducto(seleccionado);
+                    FrmAltaProducto alta = new FrmAltaProducto(seleccionado, color);
                     alta.ShowDialog();
                     cargar();
                 }
@@ -277,14 +314,14 @@ namespace Presentacion
             if (btnAgregarMarca.SelectedRows.Count > 0)
             {
 
-                    establecerColor();
-                    Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
-                    panelEliminar.Visible = true;
-                    panelFondo.Visible = true;
-                    lblSeEliminará.Visible = true;
-                    lblProductoEliminar.Text = seleccionado.Nombre;
-                    lblProductoEliminar.Visible = true;
-                    panelFondo.BringToFront();
+                establecerColor();
+                Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+                panelEliminar.Visible = true;
+                panelFondo.Visible = true;
+                lblSeEliminará.Visible = true;
+                lblProductoEliminar.Text = seleccionado.Nombre;
+                lblProductoEliminar.Visible = true;
+                panelFondo.BringToFront();
 
             }
         }
@@ -338,7 +375,8 @@ namespace Presentacion
         private void btnAgregarM_Click(object sender, EventArgs e) //agregar Marca - Categoria - ConfirmarVenta
         {
             string valor = txtNuevaMarca.Text;
-            if (addMarca) { 
+            if (addMarca)
+            {
                 MarcaNegocio mn = new MarcaNegocio();
                 mn.agregar(valor);
                 txtNuevaMarca.Text = "";
@@ -349,7 +387,8 @@ namespace Presentacion
                 cn.agregar(valor);
                 txtNuevaMarca.Text = "";
             }
-            if (confirmarVenta) {
+            if (confirmarVenta)
+            {
                 ProductoNegocio pn = new ProductoNegocio();
                 TicketNegocio tn = new TicketNegocio();
                 tn.facturar(precioFinal);
@@ -390,16 +429,16 @@ namespace Presentacion
             pnlMarcaNueva1.BringToFront();
         }
 
-        private void ventasMenuItem_Click(object sender, EventArgs e)
+        private void estadísticasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FrmVentas ventas = new FrmVentas();
+            FrmVentas ventas = new FrmVentas(color);
             ventas.ShowDialog();
             establecerColor();
             cargar();
         }
-        
-        #endregion
 
+
+        #endregion
 
         #region Selección de productos & Carrito
 
@@ -429,19 +468,19 @@ namespace Presentacion
                 {
                     seleccionado.CantidadEnticket = 1;
                     listaCarrito.Add(seleccionado);
-                    
+
                 }
                 txtCarrito.Text += seleccionado.Nombre + " - $" + seleccionado.Precio + "\n";
                 precioFinal += seleccionado.Precio;
-                lblPrecioFinal.Text ="Precio Final: $"+ Math.Round(precioFinal,2).ToString();
-                lblPrecioFinal.Visible=true;
+                lblPrecioFinal.Text = "Precio Final: $" + Math.Round(precioFinal, 2).ToString();
+                lblPrecioFinal.Visible = true;
 
             }
         }
 
         private void btnVaciar_Click(object sender, EventArgs e)
         {
-            txtCarrito.Text="";
+            txtCarrito.Text = "";
             lblPrecioFinal.Visible = false;
             precioFinal = 0;
             listaCarrito.Clear();
@@ -463,12 +502,64 @@ namespace Presentacion
 
             }
 
-           
+
         }
+
+
 
 
         #endregion
 
+        #region Modo Color
+        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 0;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+
+        }
+
+        private void verdeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 1;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+        }
+
+        private void rosaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 2;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+
+        }
+
+        private void amarilloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 3;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+
+        }
+
+        private void negroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 4;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+        }
+
+        #endregion
     }
 
 }

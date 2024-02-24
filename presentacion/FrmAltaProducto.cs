@@ -19,6 +19,7 @@ namespace Presentacion
     public partial class FrmAltaProducto : MaterialForm
     {
         private Producto producto = null;
+        private int color;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -31,19 +32,16 @@ namespace Presentacion
            int nHeightEllipse // width of ellipse
        );
         #region Constructores y Load
-        public FrmAltaProducto()
+        public FrmAltaProducto(int color)
         {
+            this.color = color;
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.LightBlue900, Primary.LightBlue900,
-            Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            establecerModo();
         }
 
-        public FrmAltaProducto(Producto producto)
+        public FrmAltaProducto(Producto producto, int color)
         {
+            this.color = color;
             InitializeComponent();
             this.producto = producto;
             Text = "Modificar producto";
@@ -210,8 +208,84 @@ namespace Presentacion
             Close();
         }
 
+        public void establecerModo()
+        {
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+          
+
+            if (color == 0)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.LightBlue900, Primary.LightBlue900,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 1)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green400, Primary.Green400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 2)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Pink400, Primary.Pink400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 3)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Amber600, Primary.Amber600,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 4)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Grey800, Primary.Grey800,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+
+        }
 
         #endregion
+
+        private void btnSeleccionarImagen_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos de imagen|*.png;*.jpg;*.jpeg;*.gif;*.bmp";
+            openFileDialog.Title = "Seleccionar imagen";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string rutaImagenSeleccionada = openFileDialog.FileName;
+                string nombreArchivo = Path.GetFileName(rutaImagenSeleccionada);
+                string carpetaImagenes = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes");
+                string nuevaRuta = Path.Combine(carpetaImagenes, nombreArchivo);
+
+                try
+                {
+                    // Verificar si la carpeta "imagenes" existe, si no, crearla.
+                    if (!Directory.Exists(carpetaImagenes))
+                    {
+                        Directory.CreateDirectory(carpetaImagenes);
+                    }
+
+                    File.Copy(rutaImagenSeleccionada, nuevaRuta, true);
+
+                    txtUrlImagen.Text = nuevaRuta;
+
+                    cargarImagen(nuevaRuta);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al copiar la imagen: " + ex.Message);
+                }
+            }
+        }
 
     }
 }

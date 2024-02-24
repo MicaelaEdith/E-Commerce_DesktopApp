@@ -47,6 +47,7 @@
             this.btnCancelar = new MaterialSkin.Controls.MaterialButton();
             this.txtStock = new MaterialSkin.Controls.MaterialTextBox();
             this.lblStock = new System.Windows.Forms.Label();
+            this.btnSeleccionarImagen = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenAlta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,13 +175,13 @@
             this.txtUrlImagen.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtUrlImagen.LeadingIcon = null;
             this.txtUrlImagen.Location = new System.Drawing.Point(107, 314);
-            this.txtUrlImagen.MaximumSize = new System.Drawing.Size(250, 25);
+            this.txtUrlImagen.MaximumSize = new System.Drawing.Size(150, 25);
             this.txtUrlImagen.MaxLength = 50;
-            this.txtUrlImagen.MinimumSize = new System.Drawing.Size(250, 25);
+            this.txtUrlImagen.MinimumSize = new System.Drawing.Size(150, 25);
             this.txtUrlImagen.MouseState = MaterialSkin.MouseState.OUT;
             this.txtUrlImagen.Multiline = false;
             this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(250, 25);
+            this.txtUrlImagen.Size = new System.Drawing.Size(150, 25);
             this.txtUrlImagen.TabIndex = 20;
             this.txtUrlImagen.Text = "";
             this.txtUrlImagen.TrailingIcon = null;
@@ -351,11 +352,33 @@
             this.lblStock.TabIndex = 28;
             this.lblStock.Text = "Stock:";
             // 
+            // btnSeleccionarImagen
+            // 
+            this.btnSeleccionarImagen.AutoSize = false;
+            this.btnSeleccionarImagen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSeleccionarImagen.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSeleccionarImagen.Depth = 0;
+            this.btnSeleccionarImagen.HighEmphasis = true;
+            this.btnSeleccionarImagen.Icon = null;
+            this.btnSeleccionarImagen.Location = new System.Drawing.Point(264, 314);
+            this.btnSeleccionarImagen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSeleccionarImagen.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSeleccionarImagen.Name = "btnSeleccionarImagen";
+            this.btnSeleccionarImagen.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSeleccionarImagen.Size = new System.Drawing.Size(93, 25);
+            this.btnSeleccionarImagen.TabIndex = 30;
+            this.btnSeleccionarImagen.Text = "agregar";
+            this.btnSeleccionarImagen.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSeleccionarImagen.UseAccentColor = false;
+            this.btnSeleccionarImagen.UseVisualStyleBackColor = true;
+            this.btnSeleccionarImagen.Click += new System.EventHandler(this.btnSeleccionarImagen_Click_1);
+            // 
             // FrmAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 507);
+            this.Controls.Add(this.btnSeleccionarImagen);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.lblStock);
             this.Controls.Add(this.btnCancelar);
@@ -405,5 +428,6 @@
         private MaterialSkin.Controls.MaterialButton btnCancelar;
         public MaterialSkin.Controls.MaterialTextBox txtStock;
         private System.Windows.Forms.Label lblStock;
+        private MaterialSkin.Controls.MaterialButton btnSeleccionarImagen;
     }
 }

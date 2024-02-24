@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,8 @@
             this.marcasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarMarca = new System.Windows.Forms.DataGridView();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -76,6 +78,12 @@
             this.btnCancelarM = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregarM = new MaterialSkin.Controls.MaterialButton();
             this.lblIngreseMarca = new MaterialSkin.Controls.MaterialLabel();
+            this.estiloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.azulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verdeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amarilloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.negroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregarMarca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
@@ -152,7 +160,8 @@
             this.articulosToolStripMenuItem,
             this.categoriasMenuItem,
             this.marcasMenuItem,
-            this.ventasMenuItem});
+            this.ventasMenuItem,
+            this.estiloToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 64);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
@@ -195,10 +204,25 @@
             // 
             // ventasMenuItem
             // 
+            this.ventasMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ticketsToolStripMenuItem,
+            this.estadísticasToolStripMenuItem});
             this.ventasMenuItem.Name = "ventasMenuItem";
             this.ventasMenuItem.Size = new System.Drawing.Size(56, 34);
             this.ventasMenuItem.Text = "Ventas";
-            this.ventasMenuItem.Click += new System.EventHandler(this.ventasMenuItem_Click);
+            // 
+            // ticketsToolStripMenuItem
+            // 
+            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.ticketsToolStripMenuItem.Text = "Tickets";
+            // 
+            // estadísticasToolStripMenuItem
+            // 
+            this.estadísticasToolStripMenuItem.Name = "estadísticasToolStripMenuItem";
+            this.estadísticasToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.estadísticasToolStripMenuItem.Text = "Estadísticas";
+            this.estadísticasToolStripMenuItem.Click += new System.EventHandler(this.estadísticasToolStripMenuItem_Click_1);
             // 
             // btnAgregarMarca
             // 
@@ -206,8 +230,8 @@
             this.btnAgregarMarca.AllowUserToDeleteRows = false;
             this.btnAgregarMarca.AllowUserToResizeColumns = false;
             this.btnAgregarMarca.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnAgregarMarca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnAgregarMarca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.btnAgregarMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -216,24 +240,24 @@
             this.btnAgregarMarca.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.btnAgregarMarca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.btnAgregarMarca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnAgregarMarca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAgregarMarca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.btnAgregarMarca.ColumnHeadersHeight = 40;
             this.btnAgregarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.btnAgregarMarca.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnAgregarMarca.DefaultCellStyle = dataGridViewCellStyle23;
             this.btnAgregarMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.btnAgregarMarca.EnableHeadersVisualStyles = false;
             this.btnAgregarMarca.GridColor = System.Drawing.SystemColors.ButtonFace;
@@ -241,18 +265,18 @@
             this.btnAgregarMarca.MultiSelect = false;
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnAgregarMarca.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAgregarMarca.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.btnAgregarMarca.RowHeadersVisible = false;
             this.btnAgregarMarca.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnAgregarMarca.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnAgregarMarca.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.btnAgregarMarca.RowTemplate.Height = 30;
             this.btnAgregarMarca.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.btnAgregarMarca.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -712,6 +736,53 @@
             this.lblIngreseMarca.Size = new System.Drawing.Size(1, 0);
             this.lblIngreseMarca.TabIndex = 0;
             // 
+            // estiloToolStripMenuItem
+            // 
+            this.estiloToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.azulToolStripMenuItem,
+            this.verdeToolStripMenuItem,
+            this.rosaToolStripMenuItem,
+            this.amarilloToolStripMenuItem,
+            this.negroToolStripMenuItem});
+            this.estiloToolStripMenuItem.Name = "estiloToolStripMenuItem";
+            this.estiloToolStripMenuItem.Size = new System.Drawing.Size(48, 34);
+            this.estiloToolStripMenuItem.Text = "Estilo";
+            // 
+            // azulToolStripMenuItem
+            // 
+            this.azulToolStripMenuItem.Name = "azulToolStripMenuItem";
+            this.azulToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.azulToolStripMenuItem.Text = "Azul";
+            this.azulToolStripMenuItem.Click += new System.EventHandler(this.azulToolStripMenuItem_Click);
+            // 
+            // verdeToolStripMenuItem
+            // 
+            this.verdeToolStripMenuItem.Name = "verdeToolStripMenuItem";
+            this.verdeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verdeToolStripMenuItem.Text = "Verde";
+            this.verdeToolStripMenuItem.Click += new System.EventHandler(this.verdeToolStripMenuItem_Click);
+            // 
+            // rosaToolStripMenuItem
+            // 
+            this.rosaToolStripMenuItem.Name = "rosaToolStripMenuItem";
+            this.rosaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rosaToolStripMenuItem.Text = "Rosa";
+            this.rosaToolStripMenuItem.Click += new System.EventHandler(this.rosaToolStripMenuItem_Click);
+            // 
+            // amarilloToolStripMenuItem
+            // 
+            this.amarilloToolStripMenuItem.Name = "amarilloToolStripMenuItem";
+            this.amarilloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.amarilloToolStripMenuItem.Text = "Amarillo";
+            this.amarilloToolStripMenuItem.Click += new System.EventHandler(this.amarilloToolStripMenuItem_Click);
+            // 
+            // negroToolStripMenuItem
+            // 
+            this.negroToolStripMenuItem.Name = "negroToolStripMenuItem";
+            this.negroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.negroToolStripMenuItem.Text = "Negro";
+            this.negroToolStripMenuItem.Click += new System.EventHandler(this.negroToolStripMenuItem_Click);
+            // 
             // Catalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,6 +880,14 @@
         private MaterialSkin.Controls.MaterialButton btnAgregarM;
         private MaterialSkin.Controls.MaterialLabel lblIngreseMarca;
         private MaterialSkin.Controls.MaterialTextBox txtNuevaMarca;
+        private System.Windows.Forms.ToolStripMenuItem ticketsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadísticasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estiloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem azulToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verdeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rosaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amarilloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem negroToolStripMenuItem;
     }
 }
 
