@@ -390,8 +390,9 @@ namespace Presentacion
             if (confirmarVenta)
             {
                 ProductoNegocio pn = new ProductoNegocio();
+                
                 TicketNegocio tn = new TicketNegocio();
-                tn.facturar(precioFinal);
+                tn.facturar(precioFinal);                
 
 
                 foreach (var producto in listaCarrito)

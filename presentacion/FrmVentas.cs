@@ -54,8 +54,9 @@ namespace Presentacion
             lblTicketPromedio.Visible = true;
             lblTicketPromedio.BringToFront();
             lblTicketPromedio.Text = "Ticket promedio:  $" + tn.obtenerPromedio().ToString() + ".-";
+            chartTop5Ventas.ChartAreas[0].BackColor = Color.White;
+            chartTop5Ventas.BackColor = Color.White;
 
-            chartTop5Ventas.Series[0].Points.Clear();
 
             foreach (var producto in listTop5)
             {
@@ -98,7 +99,7 @@ namespace Presentacion
             chartBarraMarcas.Series.Add(serieVentas);
 
             chartBarraMarcas.ChartAreas[0].AxisX.Interval = 1;
-            chartBarraMarcas.ChartAreas[0].AxisX.Title = "Grupos";
+            chartBarraMarcas.ChartAreas[0].AxisX.Title = "Marcas";
             chartBarraMarcas.ChartAreas[0].AxisY.Title = "Porcentaje de Ventas";
         }
 
@@ -126,7 +127,7 @@ namespace Presentacion
             chartBarraCategorias.Series.Add(serieVentas);
 
             chartBarraCategorias.ChartAreas[0].AxisX.Interval = 1;
-            chartBarraCategorias.ChartAreas[0].AxisX.Title = "Grupos";
+            chartBarraCategorias.ChartAreas[0].AxisX.Title = "Categorias";
             chartBarraCategorias.ChartAreas[0].AxisY.Title = "Porcentaje de Ventas";
         }
 

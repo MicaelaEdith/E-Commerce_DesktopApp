@@ -69,7 +69,7 @@
             this.chartBarraMarcas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartBarraMarcas.Legends.Add(legend1);
-            this.chartBarraMarcas.Location = new System.Drawing.Point(463, 18);
+            this.chartBarraMarcas.Location = new System.Drawing.Point(463, 21);
             this.chartBarraMarcas.Name = "chartBarraMarcas";
             this.chartBarraMarcas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series1.ChartArea = "ChartArea1";
@@ -82,9 +82,8 @@
             // 
             // chartTop5Ventas
             // 
-            this.chartTop5Ventas.BackImageTransparentColor = System.Drawing.Color.Transparent;
-            this.chartTop5Ventas.BackSecondaryColor = System.Drawing.Color.Transparent;
-            this.chartTop5Ventas.BorderlineColor = System.Drawing.Color.Transparent;
+            this.chartTop5Ventas.BackImageTransparentColor = System.Drawing.Color.White;
+            this.chartTop5Ventas.BackSecondaryColor = System.Drawing.Color.White;
             chartArea2.Name = "ChartArea1";
             this.chartTop5Ventas.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
@@ -105,6 +104,7 @@
             series2.Name = "Series1";
             series2.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series2.SmartLabelStyle.Enabled = false;
+            series2.YValuesPerPoint = 2;
             this.chartTop5Ventas.Series.Add(series2);
             this.chartTop5Ventas.Size = new System.Drawing.Size(474, 316);
             this.chartTop5Ventas.TabIndex = 0;
@@ -128,7 +128,7 @@
             this.chartBarraCategorias.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartBarraCategorias.Legends.Add(legend3);
-            this.chartBarraCategorias.Location = new System.Drawing.Point(463, 215);
+            this.chartBarraCategorias.Location = new System.Drawing.Point(463, 229);
             this.chartBarraCategorias.Name = "chartBarraCategorias";
             this.chartBarraCategorias.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series3.ChartArea = "ChartArea1";
