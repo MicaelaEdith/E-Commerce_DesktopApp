@@ -39,6 +39,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVentas));
             this.lblTicketPromedio = new MaterialSkin.Controls.MaterialLabel();
             this.chartBarraMarcas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTop5Ventas = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -167,6 +168,7 @@
             // 
             this.ClientSize = new System.Drawing.Size(918, 498);
             this.Controls.Add(this.panelFondo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(918, 498);
             this.MinimumSize = new System.Drawing.Size(918, 498);
             this.Name = "FrmVentas";
