@@ -248,6 +248,13 @@ namespace Presentacion
                 Primary.Grey800, Primary.Grey800,
                 Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
             }
+            else if (color == 5)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Purple400, Primary.Purple400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+
+            }
 
         }
 

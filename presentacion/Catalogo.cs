@@ -164,6 +164,7 @@ namespace Presentacion
             }
             else if (color == 1)
             {
+
                 materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Green400, Primary.Green400,
                 Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
@@ -185,6 +186,13 @@ namespace Presentacion
                 materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Grey800, Primary.Grey800,
                 Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if(color == 5)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Purple400, Primary.Purple400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+
             }
         }
         private void establecerColor()
@@ -561,6 +569,15 @@ namespace Presentacion
         }
 
         #endregion
+
+        private void violetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            color = 5;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+        }
     }
 
 }

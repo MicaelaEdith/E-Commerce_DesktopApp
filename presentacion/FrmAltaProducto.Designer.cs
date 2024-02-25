@@ -140,7 +140,7 @@
             this.txtCodigo.Multiline = false;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(250, 25);
-            this.txtCodigo.TabIndex = 18;
+            this.txtCodigo.TabIndex = 0;
             this.txtCodigo.Text = "";
             this.txtCodigo.TrailingIcon = null;
             this.txtCodigo.UseTallSize = false;
@@ -161,7 +161,7 @@
             this.txtNombre.Multiline = false;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(250, 25);
-            this.txtNombre.TabIndex = 19;
+            this.txtNombre.TabIndex = 1;
             this.txtNombre.Text = "";
             this.txtNombre.TrailingIcon = null;
             this.txtNombre.UseTallSize = false;
@@ -182,7 +182,7 @@
             this.txtUrlImagen.Multiline = false;
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(150, 25);
-            this.txtUrlImagen.TabIndex = 20;
+            this.txtUrlImagen.TabIndex = 5;
             this.txtUrlImagen.Text = "";
             this.txtUrlImagen.TrailingIcon = null;
             this.txtUrlImagen.UseTallSize = false;
@@ -203,7 +203,7 @@
             this.txtDescripcion.Multiline = false;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(250, 25);
-            this.txtDescripcion.TabIndex = 21;
+            this.txtDescripcion.TabIndex = 2;
             this.txtDescripcion.Text = "";
             this.txtDescripcion.TrailingIcon = null;
             this.txtDescripcion.UseTallSize = false;
@@ -224,7 +224,7 @@
             this.txtPrecio.Multiline = false;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(250, 25);
-            this.txtPrecio.TabIndex = 22;
+            this.txtPrecio.TabIndex = 3;
             this.txtPrecio.Text = "";
             this.txtPrecio.TrailingIcon = null;
             this.txtPrecio.UseTallSize = false;
@@ -250,7 +250,7 @@
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(198, 35);
             this.cbxCategoria.StartIndex = 0;
-            this.cbxCategoria.TabIndex = 24;
+            this.cbxCategoria.TabIndex = 7;
             this.cbxCategoria.UseAccent = false;
             this.cbxCategoria.UseTallSize = false;
             // 
@@ -275,7 +275,7 @@
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(198, 35);
             this.cbxMarca.StartIndex = 0;
-            this.cbxMarca.TabIndex = 25;
+            this.cbxMarca.TabIndex = 8;
             this.cbxMarca.UseAccent = false;
             this.cbxMarca.UseTallSize = false;
             // 
@@ -293,7 +293,7 @@
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAceptar.Size = new System.Drawing.Size(110, 39);
-            this.btnAceptar.TabIndex = 26;
+            this.btnAceptar.TabIndex = 9;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAceptar.UseAccentColor = false;
@@ -314,7 +314,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCancelar.Size = new System.Drawing.Size(110, 39);
-            this.btnCancelar.TabIndex = 27;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCancelar.UseAccentColor = false;
@@ -337,7 +337,7 @@
             this.txtStock.Multiline = false;
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(250, 25);
-            this.txtStock.TabIndex = 29;
+            this.txtStock.TabIndex = 4;
             this.txtStock.Text = "";
             this.txtStock.TrailingIcon = null;
             this.txtStock.UseTallSize = false;
@@ -366,7 +366,7 @@
             this.btnSeleccionarImagen.Name = "btnSeleccionarImagen";
             this.btnSeleccionarImagen.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnSeleccionarImagen.Size = new System.Drawing.Size(93, 25);
-            this.btnSeleccionarImagen.TabIndex = 30;
+            this.btnSeleccionarImagen.TabIndex = 6;
             this.btnSeleccionarImagen.Text = "agregar";
             this.btnSeleccionarImagen.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSeleccionarImagen.UseAccentColor = false;

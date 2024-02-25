@@ -54,8 +54,9 @@ namespace Presentacion
             lblTicketPromedio.Visible = true;
             lblTicketPromedio.BringToFront();
             lblTicketPromedio.Text = "Ticket promedio:  $" + tn.obtenerPromedio().ToString() + ".-";
-            chartTop5Ventas.ChartAreas[0].BackColor = Color.White;
+            //chartTop5Ventas.ChartAreas[0].BackColor = Color.White;
             chartTop5Ventas.BackColor = Color.White;
+            chartTop5Ventas.ChartAreas[0].BackColor = Color.Transparent;
 
 
             foreach (var producto in listTop5)
@@ -171,6 +172,13 @@ namespace Presentacion
                 materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Grey800, Primary.Grey800,
                 Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+            }
+            else if (color == 5)
+            {
+                materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Purple400, Primary.Purple400,
+                Primary.Grey100, Accent.LightBlue200, TextShade.WHITE);
+
             }
 
         }

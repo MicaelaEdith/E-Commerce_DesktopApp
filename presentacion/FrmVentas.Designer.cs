@@ -69,7 +69,7 @@
             this.chartBarraMarcas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartBarraMarcas.Legends.Add(legend1);
-            this.chartBarraMarcas.Location = new System.Drawing.Point(463, 21);
+            this.chartBarraMarcas.Location = new System.Drawing.Point(488, 21);
             this.chartBarraMarcas.Name = "chartBarraMarcas";
             this.chartBarraMarcas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series1.ChartArea = "ChartArea1";
@@ -78,17 +78,26 @@
             this.chartBarraMarcas.Series.Add(series1);
             this.chartBarraMarcas.Size = new System.Drawing.Size(433, 193);
             this.chartBarraMarcas.TabIndex = 1;
+            this.chartBarraMarcas.TabStop = false;
             this.chartBarraMarcas.Text = "chart2";
             // 
             // chartTop5Ventas
             // 
+            this.chartTop5Ventas.BackColor = System.Drawing.Color.Transparent;
             this.chartTop5Ventas.BackImageTransparentColor = System.Drawing.Color.White;
             this.chartTop5Ventas.BackSecondaryColor = System.Drawing.Color.White;
+            chartArea2.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            chartArea2.BackSecondaryColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "ChartArea1";
             this.chartTop5Ventas.ChartAreas.Add(chartArea2);
+            this.chartTop5Ventas.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.chartTop5Ventas.IsSoftShadows = false;
+            legend2.BackColor = System.Drawing.Color.Transparent;
             legend2.Name = "Legend1";
             this.chartTop5Ventas.Legends.Add(legend2);
-            this.chartTop5Ventas.Location = new System.Drawing.Point(0, 74);
+            this.chartTop5Ventas.Location = new System.Drawing.Point(11, 101);
             this.chartTop5Ventas.Name = "chartTop5Ventas";
             series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
             series2.BackImageTransparentColor = System.Drawing.Color.White;
@@ -106,8 +115,9 @@
             series2.SmartLabelStyle.Enabled = false;
             series2.YValuesPerPoint = 2;
             this.chartTop5Ventas.Series.Add(series2);
-            this.chartTop5Ventas.Size = new System.Drawing.Size(474, 316);
+            this.chartTop5Ventas.Size = new System.Drawing.Size(491, 226);
             this.chartTop5Ventas.TabIndex = 0;
+            this.chartTop5Ventas.TabStop = false;
             this.chartTop5Ventas.Text = "chart1";
             // 
             // materialLabel1
@@ -128,7 +138,7 @@
             this.chartBarraCategorias.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartBarraCategorias.Legends.Add(legend3);
-            this.chartBarraCategorias.Location = new System.Drawing.Point(463, 229);
+            this.chartBarraCategorias.Location = new System.Drawing.Point(488, 229);
             this.chartBarraCategorias.Name = "chartBarraCategorias";
             this.chartBarraCategorias.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series3.ChartArea = "ChartArea1";
@@ -137,6 +147,7 @@
             this.chartBarraCategorias.Series.Add(series3);
             this.chartBarraCategorias.Size = new System.Drawing.Size(433, 193);
             this.chartBarraCategorias.TabIndex = 4;
+            this.chartBarraCategorias.TabStop = false;
             this.chartBarraCategorias.Text = "chart2";
             // 
             // panelFondo
