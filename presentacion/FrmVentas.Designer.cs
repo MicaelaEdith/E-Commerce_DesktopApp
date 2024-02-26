@@ -45,11 +45,14 @@
             this.chartTop5Ventas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.chartBarraCategorias = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panelFondo = new System.Windows.Forms.Panel();
+            this.lblTotalActual = new System.Windows.Forms.Panel();
+            this.lblVendido = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblCantidadVentas = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraMarcas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTop5Ventas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraCategorias)).BeginInit();
-            this.panelFondo.SuspendLayout();
+            this.lblTotalActual.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTicketPromedio
@@ -151,23 +154,64 @@
             this.chartBarraCategorias.TabStop = false;
             this.chartBarraCategorias.Text = "chart2";
             // 
-            // panelFondo
+            // lblTotalActual
             // 
-            this.panelFondo.BackColor = System.Drawing.Color.White;
-            this.panelFondo.Controls.Add(this.chartBarraCategorias);
-            this.panelFondo.Controls.Add(this.lblTicketPromedio);
-            this.panelFondo.Controls.Add(this.materialLabel1);
-            this.panelFondo.Controls.Add(this.chartTop5Ventas);
-            this.panelFondo.Controls.Add(this.chartBarraMarcas);
-            this.panelFondo.Location = new System.Drawing.Point(-5, 61);
-            this.panelFondo.Name = "panelFondo";
-            this.panelFondo.Size = new System.Drawing.Size(935, 499);
-            this.panelFondo.TabIndex = 4;
+            this.lblTotalActual.BackColor = System.Drawing.Color.White;
+            this.lblTotalActual.Controls.Add(this.lblCantidadVentas);
+            this.lblTotalActual.Controls.Add(this.materialLabel2);
+            this.lblTotalActual.Controls.Add(this.lblVendido);
+            this.lblTotalActual.Controls.Add(this.chartBarraCategorias);
+            this.lblTotalActual.Controls.Add(this.lblTicketPromedio);
+            this.lblTotalActual.Controls.Add(this.materialLabel1);
+            this.lblTotalActual.Controls.Add(this.chartTop5Ventas);
+            this.lblTotalActual.Controls.Add(this.chartBarraMarcas);
+            this.lblTotalActual.Location = new System.Drawing.Point(-5, 61);
+            this.lblTotalActual.Name = "lblTotalActual";
+            this.lblTotalActual.Size = new System.Drawing.Size(935, 499);
+            this.lblTotalActual.TabIndex = 4;
+            // 
+            // lblVendido
+            // 
+            this.lblVendido.AutoSize = true;
+            this.lblVendido.BackColor = System.Drawing.Color.Transparent;
+            this.lblVendido.Depth = 0;
+            this.lblVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblVendido.Location = new System.Drawing.Point(49, 401);
+            this.lblVendido.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblVendido.Name = "lblVendido";
+            this.lblVendido.Size = new System.Drawing.Size(107, 19);
+            this.lblVendido.TabIndex = 5;
+            this.lblVendido.Text = "materialLabel2";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(34, 348);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(216, 19);
+            this.materialLabel2.TabIndex = 6;
+            this.materialLabel2.Text = "Desde última apertura de caja:";
+            // 
+            // lblCantidadVentas
+            // 
+            this.lblCantidadVentas.AutoSize = true;
+            this.lblCantidadVentas.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantidadVentas.Depth = 0;
+            this.lblCantidadVentas.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblCantidadVentas.Location = new System.Drawing.Point(49, 375);
+            this.lblCantidadVentas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCantidadVentas.Name = "lblCantidadVentas";
+            this.lblCantidadVentas.Size = new System.Drawing.Size(107, 19);
+            this.lblCantidadVentas.TabIndex = 7;
+            this.lblCantidadVentas.Text = "materialLabel2";
             // 
             // FrmVentas
             // 
             this.ClientSize = new System.Drawing.Size(918, 498);
-            this.Controls.Add(this.panelFondo);
+            this.Controls.Add(this.lblTotalActual);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(918, 498);
             this.MinimumSize = new System.Drawing.Size(918, 498);
@@ -177,8 +221,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraMarcas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTop5Ventas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraCategorias)).EndInit();
-            this.panelFondo.ResumeLayout(false);
-            this.panelFondo.PerformLayout();
+            this.lblTotalActual.ResumeLayout(false);
+            this.lblTotalActual.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,6 +234,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTop5Ventas;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartBarraCategorias;
-        private System.Windows.Forms.Panel panelFondo;
+        private System.Windows.Forms.Panel lblTotalActual;
+        private MaterialSkin.Controls.MaterialLabel lblVendido;
+        private MaterialSkin.Controls.MaterialLabel lblCantidadVentas;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
     }
 }

@@ -21,6 +21,7 @@ namespace Presentacion
     {
 
         int color;
+        decimal totalActual;
         Helper h = new Helper();
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -34,13 +35,16 @@ namespace Presentacion
            int nHeightEllipse // width of ellipse
        );
 
-        public FrmVentas(int color)
+        public FrmVentas(int color, decimal totalActual, int cantidadVentas)
         {
             this.color = color;
+            this.totalActual = totalActual;
             InitializeComponent();
             cargarDatosCircular();
             cargarDatosBarraMarcas();
             cargarDatosBarraCategorias();
+            lblVendido.Text = "Facturado: $"+Math.Round(totalActual,2).ToString()+".-";
+            lblCantidadVentas.Text ="Se realizaron: "+ cantidadVentas.ToString()+" ventas.";
             establecerModo();
 
 
@@ -140,7 +144,7 @@ namespace Presentacion
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
-            panelFondo.BackColor = Color.White;
+            lblTotalActual.BackColor = Color.White;
             chartTop5Ventas.BackColor = Color.FromArgb(255, 255, 255);
 
             if (color == 0)

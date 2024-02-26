@@ -47,6 +47,7 @@
             this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estiloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.azulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verdeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +86,8 @@
             this.btnCancelarM = new MaterialSkin.Controls.MaterialButton();
             this.btnAgregarM = new MaterialSkin.Controls.MaterialButton();
             this.lblIngreseMarca = new MaterialSkin.Controls.MaterialLabel();
+            this.cerrarCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verFacturaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregarMarca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
@@ -206,7 +209,8 @@
             // ventasMenuItem
             // 
             this.ventasMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.estadísticasToolStripMenuItem});
+            this.estadísticasToolStripMenuItem,
+            this.cajaToolStripMenuItem});
             this.ventasMenuItem.Name = "ventasMenuItem";
             this.ventasMenuItem.Size = new System.Drawing.Size(56, 34);
             this.ventasMenuItem.Text = "Ventas";
@@ -214,9 +218,18 @@
             // estadísticasToolStripMenuItem
             // 
             this.estadísticasToolStripMenuItem.Name = "estadísticasToolStripMenuItem";
-            this.estadísticasToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.estadísticasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estadísticasToolStripMenuItem.Text = "Estadísticas";
             this.estadísticasToolStripMenuItem.Click += new System.EventHandler(this.estadísticasToolStripMenuItem_Click_1);
+            // 
+            // cajaToolStripMenuItem
+            // 
+            this.cajaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verFacturaciónToolStripMenuItem,
+            this.cerrarCajaToolStripMenuItem});
+            this.cajaToolStripMenuItem.Name = "cajaToolStripMenuItem";
+            this.cajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cajaToolStripMenuItem.Text = "Caja";
             // 
             // estiloToolStripMenuItem
             // 
@@ -234,42 +247,42 @@
             // azulToolStripMenuItem
             // 
             this.azulToolStripMenuItem.Name = "azulToolStripMenuItem";
-            this.azulToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.azulToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.azulToolStripMenuItem.Text = "Azul";
             this.azulToolStripMenuItem.Click += new System.EventHandler(this.azulToolStripMenuItem_Click);
             // 
             // verdeToolStripMenuItem
             // 
             this.verdeToolStripMenuItem.Name = "verdeToolStripMenuItem";
-            this.verdeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verdeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.verdeToolStripMenuItem.Text = "Verde";
             this.verdeToolStripMenuItem.Click += new System.EventHandler(this.verdeToolStripMenuItem_Click);
             // 
             // rosaToolStripMenuItem
             // 
             this.rosaToolStripMenuItem.Name = "rosaToolStripMenuItem";
-            this.rosaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rosaToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.rosaToolStripMenuItem.Text = "Rosa";
             this.rosaToolStripMenuItem.Click += new System.EventHandler(this.rosaToolStripMenuItem_Click);
             // 
             // amarilloToolStripMenuItem
             // 
             this.amarilloToolStripMenuItem.Name = "amarilloToolStripMenuItem";
-            this.amarilloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.amarilloToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.amarilloToolStripMenuItem.Text = "Amarillo";
             this.amarilloToolStripMenuItem.Click += new System.EventHandler(this.amarilloToolStripMenuItem_Click);
             // 
             // violetaToolStripMenuItem
             // 
             this.violetaToolStripMenuItem.Name = "violetaToolStripMenuItem";
-            this.violetaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.violetaToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.violetaToolStripMenuItem.Text = "Violeta";
             this.violetaToolStripMenuItem.Click += new System.EventHandler(this.violetaToolStripMenuItem_Click);
             // 
             // negroToolStripMenuItem
             // 
             this.negroToolStripMenuItem.Name = "negroToolStripMenuItem";
-            this.negroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.negroToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.negroToolStripMenuItem.Text = "Gris";
             this.negroToolStripMenuItem.Click += new System.EventHandler(this.negroToolStripMenuItem_Click_1);
             // 
@@ -326,7 +339,7 @@
             this.btnAgregarMarca.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnAgregarMarca.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.btnAgregarMarca.RowTemplate.Height = 30;
+            this.btnAgregarMarca.RowTemplate.Height = 38;
             this.btnAgregarMarca.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.btnAgregarMarca.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.btnAgregarMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -789,6 +802,20 @@
             this.lblIngreseMarca.Size = new System.Drawing.Size(1, 0);
             this.lblIngreseMarca.TabIndex = 0;
             // 
+            // cerrarCajaToolStripMenuItem
+            // 
+            this.cerrarCajaToolStripMenuItem.Name = "cerrarCajaToolStripMenuItem";
+            this.cerrarCajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarCajaToolStripMenuItem.Text = "Cerrar Caja";
+            this.cerrarCajaToolStripMenuItem.Click += new System.EventHandler(this.cerrarCajaToolStripMenuItem_Click);
+            // 
+            // verFacturaciónToolStripMenuItem
+            // 
+            this.verFacturaciónToolStripMenuItem.Name = "verFacturaciónToolStripMenuItem";
+            this.verFacturaciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verFacturaciónToolStripMenuItem.Text = "Ver Facturación";
+            this.verFacturaciónToolStripMenuItem.Click += new System.EventHandler(this.verFacturaciónToolStripMenuItem_Click);
+            // 
             // Catalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -895,6 +922,9 @@
         private System.Windows.Forms.ToolStripMenuItem amarilloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem violetaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem negroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cajaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verFacturaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarCajaToolStripMenuItem;
     }
 }
 

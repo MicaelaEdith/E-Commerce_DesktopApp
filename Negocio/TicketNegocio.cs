@@ -65,15 +65,7 @@ namespace Negocio
 
         }
 
-        public static void listTickets(Ticket nuevoticket) {
-
-            AccesoDatos datos = new AccesoDatos();
-
-            Ticket.cajaDiaria.Add(nuevoticket);
-        
-        }
-
-        public static void cierreCaja(Ticket cierre, DateTime fecha)
+        public void cierreCaja(Decimal cierre, DateTime fecha)
         {
             AccesoDatos datos = new AccesoDatos();
 

@@ -21,11 +21,13 @@ namespace Presentacion
 
         private List<Producto> listaProductos;
         private List<Producto> listaCarrito = new List<Producto>();
+        private List<decimal> listaTickets = new List<decimal>();
         private decimal precioFinal;
         private bool addCategoria = false;
         private bool addMarca = false;
         private bool confirmarVenta = false;
-        Ticket listaTickets = new Ticket();
+        private bool cerrandoCaja = false;
+
 
         Helper helper = new Helper();
         private int color;  //0 azul, 1 verde, 2 rosa, 3 amarillo, 4 negro, 5 violeta;
@@ -49,7 +51,8 @@ namespace Presentacion
 
         public Catalogo()
         {
-            color=helper.seleccionarColor();
+            this.FormClosing += Catalogo_FormClosing;
+            color =helper.seleccionarColor();
             InitializeComponent();
             establecerModo();
 
@@ -79,15 +82,12 @@ namespace Presentacion
                 btnAgregarMarca.ClearSelection();
                 cargaImagen(listaProductos[0].ImagenUrl);
 
-
-
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
         }
 
         private void cargaImagen(string imagen)
@@ -400,10 +400,9 @@ namespace Presentacion
             {
                 ProductoNegocio pn = new ProductoNegocio();
                 TicketNegocio tn = new TicketNegocio();
-                
 
                 tn.facturar(precioFinal);
-                Ticket.cajaDiaria.Add(new Ticket(precioFinal));
+                listaTickets.Add(precioFinal);
 
                 foreach (var producto in listaCarrito)
                 {
@@ -443,12 +442,33 @@ namespace Presentacion
 
         private void estadísticasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FrmVentas ventas = new FrmVentas(color);
-            ventas.ShowDialog();
+            decimal totalActual = 0;
+            
+            foreach (var monto in listaTickets) {
+
+                totalActual += monto;
+            
+            }
+            FrmVentas ventas = new FrmVentas(color, totalActual, listaTickets.Count);
             establecerColor();
+            ventas.ShowDialog();
             cargar();
         }
 
+        private void cerrarCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cerrarCaja();
+            cerrandoCaja = true;
+        }
+
+        private void verFacturaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(listaTickets);
+            FrmFacturacion alta = new FrmFacturacion(color, listaTickets);
+            establecerColor();
+            alta.ShowDialog();
+            cargar();
+        }
 
         #endregion
 
@@ -467,7 +487,7 @@ namespace Presentacion
 
         private void btnAgregarItem_Click(object sender, EventArgs e)
         {
-            if (seleccionado != null)
+            if (seleccionado != null && (seleccionado.Stock-seleccionado.CantidadEnticket>0))
             {
                 Producto productoEnCarrito = listaCarrito.Find(p => p.Id == seleccionado.Id);
 
@@ -522,8 +542,57 @@ namespace Presentacion
 
         #endregion
 
+        #region Cierre de Caja
+
+        
+
+        private void Catalogo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (!cerrandoCaja)
+                {
+                    if (listaTickets.Count>0)
+                    {
+                        cerrarCaja();
+                    }
+                    cerrandoCaja = true;
+                }
+            }
+        }
+
+
+        private void cerrarCaja()
+        {
+
+            cerrandoCaja = true;
+            if (listaTickets.Count > 0)
+            {
+
+                TicketNegocio tn = new TicketNegocio();
+
+                decimal totalFacturado = 0;
+
+                foreach (var venta in listaTickets)
+                {
+
+                    totalFacturado += venta;
+                }
+
+                tn.cierreCaja(totalFacturado, DateTime.Now);
+
+                Console.WriteLine(totalFacturado);
+            }
+
+            this.Close();
+
+        }
+
+
+            #endregion
+
         #region Modo Color
-        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+            private void azulToolStripMenuItem_Click(object sender, EventArgs e)
         {
             color = 0;
             establecerModo();
@@ -581,7 +650,10 @@ namespace Presentacion
             hn.setearColor(color);
         }
 
+
         #endregion
+
+
     }
 
 }

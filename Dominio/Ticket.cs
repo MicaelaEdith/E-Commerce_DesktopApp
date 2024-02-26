@@ -16,7 +16,7 @@ namespace Dominio
 
         public int id { get; set; }
         public decimal valor { get; set; }
-        public static List<Ticket> cajaDiaria { get; set; }
+        public List<Decimal> cajaDiaria { get; set; }
 
 
     }
