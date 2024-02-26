@@ -64,5 +64,35 @@ namespace Negocio
             }
 
         }
+
+        public static void listTickets(Ticket nuevoticket) {
+
+            AccesoDatos datos = new AccesoDatos();
+
+            Ticket.cajaDiaria.Add(nuevoticket);
+        
+        }
+
+        public static void cierreCaja(Ticket cierre, DateTime fecha)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearParametro("@cierre", cierre);
+                datos.setearParametro("@fecha", fecha);
+                datos.Consulta("INSERT INTO cierresCaja (valorTotalFacturado, fecha) VALUES (@cierre, @fecha);");
+                datos.Insertar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

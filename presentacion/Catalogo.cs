@@ -25,9 +25,10 @@ namespace Presentacion
         private bool addCategoria = false;
         private bool addMarca = false;
         private bool confirmarVenta = false;
+        Ticket listaTickets = new Ticket();
 
         Helper helper = new Helper();
-        private int color;  //0 azul, 1 verde, 2 rosa, 3 amarillo, 4 negro;
+        private int color;  //0 azul, 1 verde, 2 rosa, 3 amarillo, 4 negro, 5 violeta;
        
 
         Producto seleccionado;
@@ -398,10 +399,11 @@ namespace Presentacion
             if (confirmarVenta)
             {
                 ProductoNegocio pn = new ProductoNegocio();
-                
                 TicketNegocio tn = new TicketNegocio();
-                tn.facturar(precioFinal);                
+                
 
+                tn.facturar(precioFinal);
+                Ticket.cajaDiaria.Add(new Ticket(precioFinal));
 
                 foreach (var producto in listaCarrito)
                 {
@@ -416,6 +418,7 @@ namespace Presentacion
                 lblPrecioFinal.Visible = false;
                 btnAgregarMarca.ClearSelection();
                 txtNuevaMarca.Text = "";
+                
             }
             pnlMarcaNueva1.Visible = false;
             pnlMarcaNueva2.Visible = false;
@@ -559,16 +562,6 @@ namespace Presentacion
 
         }
 
-        private void negroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            color = 4;
-            establecerModo();
-            establecerColor();
-            Helper hn = new Helper();
-            hn.setearColor(color);
-        }
-
-        #endregion
 
         private void violetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -578,6 +571,17 @@ namespace Presentacion
             Helper hn = new Helper();
             hn.setearColor(color);
         }
+
+        private void negroToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            color = 4;
+            establecerModo();
+            establecerColor();
+            Helper hn = new Helper();
+            hn.setearColor(color);
+        }
+
+        #endregion
     }
 
 }
