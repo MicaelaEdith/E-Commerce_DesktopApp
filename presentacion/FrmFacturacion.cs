@@ -122,7 +122,8 @@ namespace Presentacion
                 totalVenta += monto;
             }
             totalVenta = Math.Round((decimal)totalVenta, 2);
-            lblTotal.Text = "Facturación total: $" + totalVenta.ToString()+".-";
+            lblTotal.Text = "$ " + totalVenta.ToString()+".-";
+          //  lblFTotal.Text = "Facturacion total:";
         }
 
     }
