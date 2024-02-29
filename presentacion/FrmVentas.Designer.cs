@@ -46,13 +46,15 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.chartBarraCategorias = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTotalActual = new System.Windows.Forms.Panel();
-            this.lblVendido = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.lblCantidadVentas = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblVendido = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraMarcas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTop5Ventas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraCategorias)).BeginInit();
             this.lblTotalActual.SuspendLayout();
+            this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTicketPromedio
@@ -101,7 +103,7 @@
             legend2.BackColor = System.Drawing.Color.Transparent;
             legend2.Name = "Legend1";
             this.chartTop5Ventas.Legends.Add(legend2);
-            this.chartTop5Ventas.Location = new System.Drawing.Point(11, 101);
+            this.chartTop5Ventas.Location = new System.Drawing.Point(12, 98);
             this.chartTop5Ventas.Name = "chartTop5Ventas";
             series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
             series2.BackImageTransparentColor = System.Drawing.Color.White;
@@ -157,9 +159,7 @@
             // lblTotalActual
             // 
             this.lblTotalActual.BackColor = System.Drawing.Color.White;
-            this.lblTotalActual.Controls.Add(this.lblCantidadVentas);
-            this.lblTotalActual.Controls.Add(this.materialLabel2);
-            this.lblTotalActual.Controls.Add(this.lblVendido);
+            this.lblTotalActual.Controls.Add(this.materialCard1);
             this.lblTotalActual.Controls.Add(this.chartBarraCategorias);
             this.lblTotalActual.Controls.Add(this.lblTicketPromedio);
             this.lblTotalActual.Controls.Add(this.materialLabel1);
@@ -170,43 +170,59 @@
             this.lblTotalActual.Size = new System.Drawing.Size(935, 499);
             this.lblTotalActual.TabIndex = 4;
             // 
-            // lblVendido
-            // 
-            this.lblVendido.AutoSize = true;
-            this.lblVendido.BackColor = System.Drawing.Color.Transparent;
-            this.lblVendido.Depth = 0;
-            this.lblVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblVendido.Location = new System.Drawing.Point(49, 401);
-            this.lblVendido.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblVendido.Name = "lblVendido";
-            this.lblVendido.Size = new System.Drawing.Size(107, 19);
-            this.lblVendido.TabIndex = 5;
-            this.lblVendido.Text = "materialLabel2";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(34, 348);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(216, 19);
-            this.materialLabel2.TabIndex = 6;
-            this.materialLabel2.Text = "Desde última apertura de caja:";
-            // 
             // lblCantidadVentas
             // 
             this.lblCantidadVentas.AutoSize = true;
             this.lblCantidadVentas.BackColor = System.Drawing.Color.Transparent;
             this.lblCantidadVentas.Depth = 0;
             this.lblCantidadVentas.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblCantidadVentas.Location = new System.Drawing.Point(49, 375);
+            this.lblCantidadVentas.Location = new System.Drawing.Point(55, 28);
             this.lblCantidadVentas.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCantidadVentas.Name = "lblCantidadVentas";
             this.lblCantidadVentas.Size = new System.Drawing.Size(107, 19);
             this.lblCantidadVentas.TabIndex = 7;
             this.lblCantidadVentas.Text = "materialLabel2";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(87, 4);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(216, 19);
+            this.materialLabel2.TabIndex = 6;
+            this.materialLabel2.Text = "Desde última apertura de caja:";
+            // 
+            // lblVendido
+            // 
+            this.lblVendido.AutoSize = true;
+            this.lblVendido.BackColor = System.Drawing.Color.Transparent;
+            this.lblVendido.Depth = 0;
+            this.lblVendido.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblVendido.Location = new System.Drawing.Point(55, 53);
+            this.lblVendido.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblVendido.Name = "lblVendido";
+            this.lblVendido.Size = new System.Drawing.Size(107, 19);
+            this.lblVendido.TabIndex = 5;
+            this.lblVendido.Text = "materialLabel2";
+            // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.lblCantidadVentas);
+            this.materialCard1.Controls.Add(this.materialLabel2);
+            this.materialCard1.Controls.Add(this.lblVendido);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(55, 337);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(395, 81);
+            this.materialCard1.TabIndex = 8;
             // 
             // FrmVentas
             // 
@@ -223,6 +239,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartBarraCategorias)).EndInit();
             this.lblTotalActual.ResumeLayout(false);
             this.lblTotalActual.PerformLayout();
+            this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,5 +256,6 @@
         private MaterialSkin.Controls.MaterialLabel lblVendido;
         private MaterialSkin.Controls.MaterialLabel lblCantidadVentas;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }

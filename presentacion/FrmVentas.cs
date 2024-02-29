@@ -43,7 +43,7 @@ namespace Presentacion
             cargarDatosCircular();
             cargarDatosBarraMarcas();
             cargarDatosBarraCategorias();
-            lblVendido.Text = "Facturado: $"+Math.Round(totalActual,2).ToString()+".-";
+            lblVendido.Text = "Total Facturado: $"+Math.Round(totalActual,2).ToString()+".-";
             lblCantidadVentas.Text ="Se realizaron: "+ cantidadVentas.ToString()+" ventas.";
             establecerModo();
 
