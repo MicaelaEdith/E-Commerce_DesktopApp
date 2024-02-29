@@ -73,16 +73,19 @@ namespace Presentacion
             try
             {
                 listaProductos = negocio.listaProductos();
-                btnAgregarMarca.DataSource = listaProductos;
-                btnAgregarMarca.Columns["imagenUrl"].Visible = false;
-                btnAgregarMarca.Columns["Id"].Visible = false;
-                btnAgregarMarca.Columns["Descripcion"].Visible = false;
-                btnAgregarMarca.Columns["CantidadVentas"].Visible = false;
-                btnAgregarMarca.Columns["CantidadEnticket"].Visible = false;
-                btnAgregarMarca.ClearSelection();
-                cargaImagen(listaProductos[0].ImagenUrl);
+                if (listaProductos.Count > 0)
+                {
+                    btnAgregarMarca.DataSource = listaProductos;
+                    btnAgregarMarca.Columns["imagenUrl"].Visible = false;
+                    btnAgregarMarca.Columns["Id"].Visible = false;
+                    btnAgregarMarca.Columns["Descripcion"].Visible = false;
+                    btnAgregarMarca.Columns["CantidadVentas"].Visible = false;
+                    btnAgregarMarca.Columns["CantidadEnticket"].Visible = false;
+                    btnAgregarMarca.ClearSelection();
+                    cargaImagen(listaProductos[0].ImagenUrl);
+                }
 
-            }
+                }
             catch (Exception ex)
             {
 
