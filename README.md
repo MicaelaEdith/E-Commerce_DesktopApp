@@ -1,6 +1,10 @@
 # E-Commerce_Catalogo
 ado .net C# winforms SQL - POO - crud
 
+
+![1-03](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/286c0b28-f4e1-4741-a45e-b185262917f2)
+
+
 Version - 1.0.1
 
 ![1](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/ef40124a-1021-4399-bce5-5686a3b9bc0f)
