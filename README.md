@@ -1,17 +1,7 @@
-# E-Commerce_Catalogo
-ado .net C# winforms SQL - POO - crud
+# StockFlow Project!
 
 
-![1-03](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/286c0b28-f4e1-4741-a45e-b185262917f2)
-
-
-Version - 1.0.1
-
-![1](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/ef40124a-1021-4399-bce5-5686a3b9bc0f)
-![2](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/ce36232d-9d3f-4418-9e77-6fba8304bc68)
-![3](https://github.com/MicaelaEdith/E-Commerce_DesktopApp/assets/109880462/42da6b29-cb6c-4282-9a90-1522f7617e88)
-
-Version - 1.0.0
-
-
-![AppCrud](https://user-images.githubusercontent.com/109880462/204938372-7a008472-e515-4fa2-8435-3599ce9aa583.png)
+![2_Mesa de trabajo 1](https://github.com/MicaelaEdith/StockFlow_DesktopApp/assets/109880462/89648ca6-b2c9-4c49-be25-e2e05d6eb8bf)
+![2-02](https://github.com/MicaelaEdith/StockFlow_DesktopApp/assets/109880462/101530e7-120d-4756-acb6-0b8e10ace218)
+![2-03](https://github.com/MicaelaEdith/StockFlow_DesktopApp/assets/109880462/a2369c0e-6373-471d-bf1f-ac23857b08cb)
+![1-01](https://github.com/MicaelaEdith/StockFlow_DesktopApp/assets/109880462/f9891726-7b1c-45e0-a217-ebd844c595e5)
