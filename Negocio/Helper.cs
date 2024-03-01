@@ -64,7 +64,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string sql = "SELECT m.Id AS IdMarca, m.Descripcion AS NombreMarca, SUM(a.CantidadVentas) AS CantidadVentas FROM MARCAS m JOIN ARTICULOS a ON m.Id = a.IdMarca GROUP BY m.Id, m.Descripcion";
+                string sql = "SELECT TOP 5  m.Id AS IdMarca, m.Descripcion AS NombreMarca, SUM(a.CantidadVentas) AS CantidadVentas FROM MARCAS m JOIN ARTICULOS a ON m.Id = a.IdMarca GROUP BY m.Id, m.Descripcion";
 
                 datos.Consulta(sql);
                 datos.Leer();
@@ -98,7 +98,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string sql = "SELECT c.Id AS IdCategoria, c.descripcion AS NombreCategoria, SUM(a.CantidadVentas) AS CantidadVentas FROM CATEGORIAS c JOIN ARTICULOS a ON c.Id = a.IdCategoria GROUP BY c.Id, c.descripcion";
+                string sql = "SELECT TOP 5 c.Id AS IdCategoria, c.descripcion AS NombreCategoria, SUM(a.CantidadVentas) AS CantidadVentas FROM CATEGORIAS c JOIN ARTICULOS a ON c.Id = a.IdCategoria GROUP BY c.Id, c.descripcion";
 
                 datos.Consulta(sql);
                 datos.Leer();

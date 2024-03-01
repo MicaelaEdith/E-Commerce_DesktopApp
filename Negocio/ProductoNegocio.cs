@@ -63,7 +63,7 @@ namespace Negocio
 
                 List<Producto> productosEncontrados = new List<Producto>();
                 AccesoDatos datos = new AccesoDatos();
-            string consulta = "SELECT A.Id, Codigo, Nombre,A.Descripcion, M.Descripcion as Marca,C.Descripcion as Categoria,ImagenUrl,Precio,A.IdMarca,A.IdCategoria FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE M.Id=A.IdMarca and C.Id=A.IdCategoria ";
+            string consulta = "SELECT A.Id, Codigo, Nombre,A.Descripcion, M.Descripcion as Marca,C.Descripcion as Categoria,ImagenUrl,Precio,A.IdMarca,A.IdCategoria, stock FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE M.Id=A.IdMarca and C.Id=A.IdCategoria ";
                 try
                 {
 
@@ -96,6 +96,7 @@ namespace Negocio
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                         aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                         aux.Precio = Math.Round((decimal)datos.Lector["Precio"], 2);
+                        aux.Stock = (int)datos.Lector["Stock"];
 
                     productosEncontrados.Add(aux);
                     }

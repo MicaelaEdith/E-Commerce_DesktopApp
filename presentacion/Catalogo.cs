@@ -75,14 +75,17 @@ namespace Presentacion
                 listaProductos = negocio.listaProductos();
                 if (listaProductos.Count > 0)
                 {
-                    btnAgregarMarca.DataSource = listaProductos;
-                    btnAgregarMarca.Columns["imagenUrl"].Visible = false;
-                    btnAgregarMarca.Columns["Id"].Visible = false;
-                    btnAgregarMarca.Columns["Descripcion"].Visible = false;
-                    btnAgregarMarca.Columns["CantidadVentas"].Visible = false;
-                    btnAgregarMarca.Columns["CantidadEnticket"].Visible = false;
-                    btnAgregarMarca.ClearSelection();
+                    dgvListadoProductos.DataSource = listaProductos;
+                    dgvListadoProductos.Columns["imagenUrl"].Visible = false;
+                    dgvListadoProductos.Columns["Id"].Visible = false;
+                    dgvListadoProductos.Columns["Descripcion"].Visible = false;
+                    dgvListadoProductos.Columns["CantidadVentas"].Visible = false;
+                    dgvListadoProductos.Columns["CantidadEnticket"].Visible = false;
+                    dgvListadoProductos.ClearSelection();
                     cargaImagen(listaProductos[0].ImagenUrl);
+
+                    dgvListadoProductos.Columns["nombre"].Width = 210;
+                    dgvListadoProductos.Columns["stock"].Width = 60;  
                 }
 
                 }
@@ -140,17 +143,17 @@ namespace Presentacion
             txtPrecioMin.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMin.Width, txtPrecioMin.Height, 5, 5));
             txtPrecioMax.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPrecioMax.Width, txtPrecioMax.Height, 5, 5));
             txtBusqueda.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtBusqueda.Width, txtBusqueda.Height, 5, 5));
-            btnAgregarMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAgregarMarca.Width, btnAgregarMarca.Height, 5, 5));
+            dgvListadoProductos.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, dgvListadoProductos.Width, dgvListadoProductos.Height, 5, 5));
             txtCarrito.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtCarrito.Width, txtCarrito.Height, 5, 5));
             cbxCategorias.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxCategorias.Width, cbxCategorias.Height, 5, 5));
             cbxMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, cbxMarca.Width, cbxMarca.Height, 5, 5));
-            btnAgregarMarca.ForeColor = Color.FromArgb(20, 20, 20);
+            dgvListadoProductos.ForeColor = Color.FromArgb(20, 20, 20);
             panelEliminar.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelEliminar.Width, panelEliminar.Height, 5, 5));
             pnlMarcaNueva1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva1.Width, pnlMarcaNueva1.Height, 5, 5));
             pnlMarcaNueva2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlMarcaNueva2.Width, pnlMarcaNueva2.Height, 5, 5));
             txtNuevaMarca.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, txtNuevaMarca.Width, txtNuevaMarca.Height, 5, 5));
-
             panelFondo.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelFondo.Width, panelFondo.Height, 5, 5));
+
             panelEliminar.Visible = false;
             panelFondo.Visible = false;
             lblSeEliminará.Visible = false;
@@ -228,11 +231,16 @@ namespace Presentacion
             {
                 listaFiltrada = listaProductos;
             }
-            btnAgregarMarca.DataSource = null;
-            btnAgregarMarca.DataSource = listaFiltrada;
-            btnAgregarMarca.Columns["imagenUrl"].Visible = false;
-            btnAgregarMarca.Columns["Id"].Visible = false;
-            btnAgregarMarca.Columns["Descripcion"].Visible = false;
+            dgvListadoProductos.DataSource = null;
+            dgvListadoProductos.DataSource = listaFiltrada;
+            dgvListadoProductos.Columns["imagenUrl"].Visible = false;
+            dgvListadoProductos.Columns["Id"].Visible = false;
+            dgvListadoProductos.Columns["Descripcion"].Visible = false;
+            dgvListadoProductos.Columns["CantidadVentas"].Visible = false;
+            dgvListadoProductos.Columns["CantidadEnticket"].Visible = false;
+
+            dgvListadoProductos.Columns["nombre"].Width = 210;
+            dgvListadoProductos.Columns["stock"].Width = 60;
         }
 
         private void txtPrecioMin_TextChanged(object sender, EventArgs e)
@@ -268,7 +276,7 @@ namespace Presentacion
             if (negocio.validarBusqueda(minimo, maximo))
             {
                 listaProductos = negocio.buscar(minimo, maximo, categoria, marca);
-                btnAgregarMarca.DataSource = listaProductos;
+                dgvListadoProductos.DataSource = listaProductos;
             }
             else
                 MessageBox.Show("El precio mínimo no debe superar al precio máximo de búsqueda.");
@@ -299,13 +307,13 @@ namespace Presentacion
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (btnAgregarMarca.SelectedRows.Count > 0)
+            if (dgvListadoProductos.SelectedRows.Count > 0)
             {
 
                 try
 
                 {
-                    Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+                    Producto seleccionado = (Producto)dgvListadoProductos.CurrentRow.DataBoundItem;
                     establecerColor();
                     FrmAltaProducto alta = new FrmAltaProducto(seleccionado, color);
                     alta.ShowDialog();
@@ -323,11 +331,11 @@ namespace Presentacion
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (btnAgregarMarca.SelectedRows.Count > 0)
+            if (dgvListadoProductos.SelectedRows.Count > 0)
             {
 
                 establecerColor();
-                Producto seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+                Producto seleccionado = (Producto)dgvListadoProductos.CurrentRow.DataBoundItem;
                 panelEliminar.Visible = true;
                 panelFondo.Visible = true;
                 lblSeEliminará.Visible = true;
@@ -418,7 +426,7 @@ namespace Presentacion
                 precioFinal = 0;
                 txtCarrito.Text = "";
                 lblPrecioFinal.Visible = false;
-                btnAgregarMarca.ClearSelection();
+                dgvListadoProductos.ClearSelection();
                 txtNuevaMarca.Text = "";
                 
             }
@@ -484,7 +492,7 @@ namespace Presentacion
 
         private void seleccionGrilla()
         {
-            seleccionado = (Producto)btnAgregarMarca.CurrentRow.DataBoundItem;
+            seleccionado = (Producto)dgvListadoProductos.CurrentRow.DataBoundItem;
             cargaImagen(seleccionado.ImagenUrl);
         }
 
